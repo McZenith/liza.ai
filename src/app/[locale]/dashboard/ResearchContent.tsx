@@ -39,6 +39,50 @@ interface KeywordAnalysisResult {
         topQuestions: string[];
         relatedKeywords: string[];
     };
+    rankingInsights?: {
+        topFactors: Array<{
+            factor: string;
+            correlation: number;
+            recommendation: string;
+        }>;
+    };
+    topVideos?: Array<{
+        details: {
+            videoId: string;
+            title: string;
+            viewCount: number;
+            likeCount: number;
+            duration: string;
+            thumbnails: {
+                medium: string;
+            };
+        };
+        channel?: {
+            title: string;
+            subscriberCount: number;
+        };
+        rankingSignals?: {
+            keywordInTitle: boolean;
+            keywordInFirst3Words: boolean;
+            keywordInDescription: boolean;
+            tagMatchCount: number;
+            transcriptMentions: number;
+            engagementRate: number;
+            channelAuthorityTier: number;
+            keywordInChannelName: boolean;
+            keywordInChannelKeywords: boolean;
+            channelKeywordMatchCount: number;
+            isNicheChannel: boolean;
+            keywordInChannelDescription: boolean;
+            commentKeywordMentions: number;
+            audienceDiscussesKeyword: boolean;
+            channelVideosAnalyzed: number;
+            channelVideosWithKeyword: number;
+            channelKeywordRatio: number;
+            isKeywordAuthority: boolean;
+            rankingReasons: string[];
+        };
+    }>;
 }
 
 interface AutocompleteSuggestions {
@@ -572,7 +616,7 @@ export default function ResearchContent() {
                         </div>
                     </div>
 
-                    {/* Long-tail Keywords - Gold Nuggets */}
+                    {/* Long-tail Keywords - Gold Nuggets (Hidden Opportunities) */}
                     {(longTailLoading || longTails.length > 0) && (
                         <div className="card p-6">
                             <div className="flex items-center justify-between mb-4">
@@ -680,6 +724,112 @@ export default function ResearchContent() {
                         </div>
                     )}
 
+                    {/* Why Videos Rank - Ranking Insights */}
+                    {((result.rankingInsights?.topFactors?.length ?? 0) > 0 || (result.topVideos?.length ?? 0) > 0) && (
+                        <div className="card p-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-2xl">🎯</span>
+                                <div>
+                                    <h3 className="text-lg font-semibold text-[var(--text-primary)]">Why Videos Rank</h3>
+                                    <p className="text-sm text-[var(--text-muted)]">Understanding top-ranking content patterns</p>
+                                </div>
+                            </div>
+
+                            {/* Top Ranking Factors */}
+                            {result.rankingInsights?.topFactors && result.rankingInsights.topFactors.length > 0 && (
+                                <div className="mb-6">
+                                    <p className="text-xs text-[var(--text-muted)] font-medium mb-3 uppercase tracking-wider">Key Ranking Factors</p>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                        {result.rankingInsights.topFactors.slice(0, 3).map((factor, i) => (
+                                            <div key={i} className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border)]">
+                                                <div className="flex items-center justify-between mb-1">
+                                                    <span className="text-sm font-medium text-[var(--text-primary)]">{factor.factor}</span>
+                                                    <span className={`text-xs font-bold ${factor.correlation >= 0.3 ? 'text-emerald-400' : factor.correlation >= 0 ? 'text-amber-400' : 'text-red-400'}`}>
+                                                        {factor.correlation >= 0 ? '+' : ''}{(factor.correlation * 100).toFixed(0)}%
+                                                    </span>
+                                                </div>
+                                                <p className="text-xs text-[var(--text-muted)]">{factor.recommendation}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Top Videos with Ranking Reasons */}
+                            {result.topVideos && result.topVideos.length > 0 && (
+                                <div>
+                                    <p className="text-xs text-[var(--text-muted)] font-medium mb-3 uppercase tracking-wider">Top Ranking Videos</p>
+                                    <div className="space-y-3">
+                                        {result.topVideos.slice(0, 5).map((video, i) => (
+                                            <div key={i} className="flex gap-4 p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border)] hover:border-[#FF4F00]/30 transition-colors">
+                                                {/* Thumbnail */}
+                                                <div className="flex-shrink-0">
+                                                    <a
+                                                        href={`https://youtube.com/watch?v=${video.details.videoId}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="block w-24 h-14 rounded-md overflow-hidden bg-[var(--bg-hover)] relative group"
+                                                    >
+                                                        {video.details.thumbnails?.medium ? (
+                                                            <img
+                                                                src={video.details.thumbnails.medium}
+                                                                alt={video.details.title}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        ) : (
+                                                            <div className="w-full h-full flex items-center justify-center text-2xl">🎬</div>
+                                                        )}
+                                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                                                            <svg className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+                                                                <path d="M8 5v14l11-7z" />
+                                                            </svg>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                                {/* Video Info */}
+                                                <div className="flex-1 min-w-0">
+                                                    <a
+                                                        href={`https://youtube.com/watch?v=${video.details.videoId}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-sm font-medium text-[var(--text-primary)] hover:text-[#FF4F00] transition-colors line-clamp-1"
+                                                    >
+                                                        {video.details.title}
+                                                    </a>
+                                                    <div className="flex items-center gap-2 mt-1 text-xs text-[var(--text-muted)]">
+                                                        <span>{video.channel?.title || 'Unknown Channel'}</span>
+                                                        <span>•</span>
+                                                        <span>{formatVolume(video.details.viewCount)} views</span>
+                                                    </div>
+
+                                                    {/* Ranking Reasons Badges */}
+                                                    {video.rankingSignals?.rankingReasons && video.rankingSignals.rankingReasons.length > 0 && (
+                                                        <div className="flex flex-wrap gap-1.5 mt-2">
+                                                            {video.rankingSignals.rankingReasons.slice(0, 4).map((reason, j) => (
+                                                                <span
+                                                                    key={j}
+                                                                    className="px-2 py-0.5 rounded-full bg-[var(--bg-hover)] text-[10px] text-[var(--text-muted)]"
+                                                                >
+                                                                    {reason}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Rank Badge */}
+                                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF4F00]/20 to-[#FF4F00]/5 border border-[#FF4F00]/30 flex items-center justify-center">
+                                                    <span className="text-sm font-bold text-[#FF4F00]">#{i + 1}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
                     {/* Recommendations */}
                     {result.recommendations && (
                         <div className="card p-6">
@@ -713,6 +863,22 @@ export default function ResearchContent() {
                                     </div>
                                 )}
                             </div>
+
+                            {/* Questions from Comments */}
+                            {result.recommendations.topQuestions && result.recommendations.topQuestions.length > 0 && (
+                                <div className="mt-6 pt-6 border-t border-[var(--border)]">
+                                    <p className="text-[var(--text-muted)] text-sm mb-3 flex items-center gap-2">
+                                        <span>❓</span> Questions Your Audience Asks
+                                    </p>
+                                    <div className="space-y-2">
+                                        {result.recommendations.topQuestions.slice(0, 5).map((question, i) => (
+                                            <div key={i} className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border)]">
+                                                <p className="text-sm text-[var(--text-primary)]">{question}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>

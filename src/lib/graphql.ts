@@ -145,6 +145,50 @@ export const ANALYZE_KEYWORD_QUERY = `
         topQuestions
         relatedKeywords
       }
+      rankingInsights {
+        topFactors {
+          factor
+          correlation
+          recommendation
+        }
+      }
+      topVideos {
+        details {
+          videoId
+          title
+          viewCount
+          likeCount
+          duration
+          thumbnails {
+            medium
+          }
+        }
+        channel {
+          title
+          subscriberCount
+        }
+        rankingSignals {
+          keywordInTitle
+          keywordInFirst3Words
+          keywordInDescription
+          tagMatchCount
+          transcriptMentions
+          engagementRate
+          channelAuthorityTier
+          keywordInChannelName
+          keywordInChannelKeywords
+          channelKeywordMatchCount
+          isNicheChannel
+          keywordInChannelDescription
+          commentKeywordMentions
+          audienceDiscussesKeyword
+          channelVideosAnalyzed
+          channelVideosWithKeyword
+          channelKeywordRatio
+          isKeywordAuthority
+          rankingReasons
+        }
+      }
     }
   }
 `;
