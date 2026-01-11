@@ -157,5 +157,27 @@
     "privacy": "プライバシー",
     "terms": "利用規約",
     "allRightsReserved": "全著作権所有。"
+},
+"auth": {
+    "welcomeBack": "今すぐ始める",
+    "signInDescription": "ログインまたはアカウントを作成して続行",
+    "continueWith": "で続ける",
+    "signUpWith": "で登録",
+    "or": "または",
+    "termsAgreement": "続行することで、当社の",
+    "termsOfService": "利用規約",
+    "and": "と",
+    "privacyPolicy": "プライバシーポリシー",
+    "backToHome": "ホームに戻る"
+},
+"dashboard": {
+    "welcome": "おかえりなさい",
+    "subtitle": "今日のコンテンツの状況はこちらです。",
+    "signOut": "ログアウト",
+    "quickActions": "クイックアクション",
+    "researchContent": "コンテンツリサーチ",
+    "schedulePosts": "投稿をスケジュール",
+    "viewAnalytics": "分析を見る",
+    "manageAccounts": "アカウント管理"
   }
 }

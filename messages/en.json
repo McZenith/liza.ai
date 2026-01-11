@@ -157,5 +157,27 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "allRightsReserved": "All rights reserved."
+},
+"auth": {
+    "welcomeBack": "Get Started",
+    "signInDescription": "Sign in or create your account to continue",
+    "continueWith": "Continue with",
+    "signUpWith": "Sign up with",
+    "or": "or",
+    "termsAgreement": "By continuing, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
+    "backToHome": "Back to home"
+},
+"dashboard": {
+    "welcome": "Welcome back",
+    "subtitle": "Here's what's happening with your content today.",
+    "signOut": "Sign Out",
+    "quickActions": "Quick Actions",
+    "researchContent": "Research Content",
+    "schedulePosts": "Schedule Posts",
+    "viewAnalytics": "View Analytics",
+    "manageAccounts": "Manage Accounts"
   }
 }

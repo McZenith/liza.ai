@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from "../ThemeProvider";
 import { locales, localeNames } from '@/i18n/config';
@@ -134,6 +135,7 @@ function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('nav');
+  const locale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -228,16 +230,18 @@ function Navigation() {
           </motion.button>
 
           {/* Desktop: Login + CTA */}
-          <button className="hidden md:block text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium transition px-3">
+          <Link href={`/${locale}/login`} className="hidden md:block text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium transition px-3">
             {t('login')}
-          </button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden sm:block btn-primary text-xs md:text-sm py-2 md:py-3 px-4 md:px-6"
-          >
-            {t('startFree')}
-          </motion.button>
+          </Link>
+          <Link href={`/${locale}/login`}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden sm:block btn-primary text-xs md:text-sm py-2 md:py-3 px-4 md:px-6"
+            >
+              {t('startFree')}
+            </motion.button>
+          </Link>
 
           {/* Mobile: Hamburger Menu */}
           <motion.button
@@ -283,15 +287,17 @@ function Navigation() {
               </a>
             ))}
             <div className="pt-2 border-t border-[var(--border)] mt-2 flex flex-col gap-2">
-              <button className="py-3 px-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg font-medium transition text-left">
+              <Link href={`/${locale}/login`} className="py-3 px-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg font-medium transition text-left">
                 {t('login')}
-              </button>
-              <motion.button
-                whileTap={{ scale: 0.98 }}
-                className="btn-primary text-sm py-3 px-6 w-full"
-              >
-                {t('startFree')}
-              </motion.button>
+              </Link>
+              <Link href={`/${locale}/login`}>
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
+                  className="btn-primary text-sm py-3 px-6 w-full"
+                >
+                  {t('startFree')}
+                </motion.button>
+              </Link>
             </div>
           </div>
         </motion.div>
@@ -305,6 +311,7 @@ function Navigation() {
 function Hero() {
   const ref = useRef(null);
   const t = useTranslations('hero');
+  const locale = useLocale();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
@@ -360,13 +367,15 @@ function Hero() {
           transition={{ delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16"
         >
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(255, 79, 0, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary text-base md:text-lg px-6 md:px-10 py-4 md:py-5 w-full sm:w-auto animate-pulse-glow"
-          >
-            {t('ctaPrimary')}
-          </motion.button>
+          <Link href={`/${locale}/login`}>
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(255, 79, 0, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary text-base md:text-lg px-6 md:px-10 py-4 md:py-5 w-full sm:w-auto animate-pulse-glow"
+            >
+              {t('ctaPrimary')}
+            </motion.button>
+          </Link>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -707,6 +716,7 @@ function FinalCTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const t = useTranslations('cta');
+  const locale = useLocale();
 
   return (
     <section ref={ref} className="snap-section relative py-32 z-10">
@@ -721,13 +731,15 @@ function FinalCTA() {
           <p className="text-xl text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
             {t('description')}
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 0 60px rgba(255, 79, 0, 0.5)" }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary text-lg px-12 py-6"
-          >
-            {t('button')}
-          </motion.button>
+          <Link href={`/${locale}/login`}>
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 0 60px rgba(255, 79, 0, 0.5)" }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary text-lg px-12 py-6"
+            >
+              {t('button')}
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

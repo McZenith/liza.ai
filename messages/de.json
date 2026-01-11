@@ -157,5 +157,27 @@
     "privacy": "Datenschutz",
     "terms": "AGB",
     "allRightsReserved": "Alle Rechte vorbehalten."
+},
+"auth": {
+    "welcomeBack": "Jetzt Loslegen",
+    "signInDescription": "Melden Sie sich an oder erstellen Sie ein Konto",
+    "continueWith": "Weiter mit",
+    "signUpWith": "Registrieren mit",
+    "or": "oder",
+    "termsAgreement": "Mit der Anmeldung akzeptieren Sie unsere",
+    "termsOfService": "Nutzungsbedingungen",
+    "and": "und",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "backToHome": "Zurück zur Startseite"
+},
+"dashboard": {
+    "welcome": "Willkommen zurück",
+    "subtitle": "Hier ist, was heute mit Ihren Inhalten passiert.",
+    "signOut": "Abmelden",
+    "quickActions": "Schnellaktionen",
+    "researchContent": "Inhalte Recherchieren",
+    "schedulePosts": "Posts Planen",
+    "viewAnalytics": "Analysen Anzeigen",
+    "manageAccounts": "Konten Verwalten"
   }
 }

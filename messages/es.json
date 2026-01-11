@@ -157,5 +157,27 @@
     "privacy": "Privacidad",
     "terms": "Términos",
     "allRightsReserved": "Todos los derechos reservados."
+},
+"auth": {
+    "welcomeBack": "Comienza Ahora",
+    "signInDescription": "Inicia sesión o crea tu cuenta para continuar",
+    "continueWith": "Continuar con",
+    "signUpWith": "Registrarse con",
+    "or": "o",
+    "termsAgreement": "Al continuar, aceptas nuestros",
+    "termsOfService": "Términos de Servicio",
+    "and": "y",
+    "privacyPolicy": "Política de Privacidad",
+    "backToHome": "Volver al inicio"
+},
+"dashboard": {
+    "welcome": "Bienvenido de nuevo",
+    "subtitle": "Esto es lo que está pasando con tu contenido hoy.",
+    "signOut": "Cerrar Sesión",
+    "quickActions": "Acciones Rápidas",
+    "researchContent": "Investigar Contenido",
+    "schedulePosts": "Programar Posts",
+    "viewAnalytics": "Ver Analíticas",
+    "manageAccounts": "Gestionar Cuentas"
   }
 }
