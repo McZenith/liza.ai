@@ -15,9 +15,17 @@ interface KeywordAnalysisResult {
     };
     contentSupply: {
         videoCount: number;
+        totalSearchResults: number;
         contentGapScore: number;
         competitionLevel: string;
         avgCompetitorViews: number;
+        videosUploadedToday: number;
+        videosLast3Days: number;
+        videosThisWeek: number;
+        videosThisMonth: number;
+        videosThisYear: number;
+        isDormantOpportunity: boolean;
+        contentActivityLevel: string;
     };
     scores: {
         opportunity: number;
@@ -189,31 +197,28 @@ export default function ResearchContent() {
             setResult(res.data.analyzeKeyword);
             setAnalyzing(false);
 
-            // For grades C, D, F - subscribe to long-tail updates
-            const grade = res.data.analyzeKeyword.scores.grade;
-            if (["C", "D", "F"].includes(grade)) {
-                setLongTailLoading(true);
-                try {
-                    unsubscribeRef.current = subscribeToLongTailAnalysis(
-                        keyword,
-                        (update: LongTailUpdate) => {
-                            setLongTailProgress({ current: update.analyzedCount, total: update.totalCount });
-                            if (update.allResults) {
-                                setLongTails(update.allResults);
-                            }
-                        },
-                        () => {
-                            setLongTailLoading(false);
-                        },
-                        (err) => {
-                            console.error("Subscription error:", err);
-                            setLongTailLoading(false);
+            // Subscribe to long-tail updates for ALL grades for consistent UI
+            setLongTailLoading(true);
+            try {
+                unsubscribeRef.current = subscribeToLongTailAnalysis(
+                    keyword,
+                    (update: LongTailUpdate) => {
+                        setLongTailProgress({ current: update.analyzedCount, total: update.totalCount });
+                        if (update.allResults) {
+                            setLongTails(update.allResults);
                         }
-                    );
-                } catch (subErr) {
-                    console.error("Subscription setup failed:", subErr);
-                    setLongTailLoading(false);
-                }
+                    },
+                    () => {
+                        setLongTailLoading(false);
+                    },
+                    (err) => {
+                        console.error("Subscription error:", err);
+                        setLongTailLoading(false);
+                    }
+                );
+            } catch (subErr) {
+                console.error("Subscription setup failed:", subErr);
+                setLongTailLoading(false);
             }
         } catch (err) {
             setError(err instanceof Error ? err.message : "Failed to analyze keyword");
@@ -510,22 +515,61 @@ export default function ResearchContent() {
                         </div>
                     </div>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                        {[
-                            { label: "Search Volume", value: formatVolume(result.searchDemand.volume), icon: "📊", color: "from-purple-600 to-purple-400" },
-                            { label: "Videos", value: result.contentSupply.videoCount.toLocaleString(), icon: "🎬", color: "from-cyan-600 to-cyan-400" },
-                            { label: "Competition", value: result.contentSupply.competitionLevel, icon: "⚔️", color: "from-pink-600 to-pink-400" },
-                            { label: "Trend", value: result.searchDemand.trendType, icon: result.searchDemand.momentum > 0 ? "📈" : result.searchDemand.momentum < 0 ? "📉" : "➡️", color: "from-amber-600 to-amber-400" },
-                        ].map((stat, i) => (
-                            <div key={i} className="card p-5 group hover:border-[var(--border-light)] transition-all">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <span className="text-2xl">{stat.icon}</span>
-                                    <p className="text-[var(--text-muted)] text-sm">{stat.label}</p>
+                    {/* Stats Grid with Velocity */}
+                    <div className="card p-5">
+                        {/* Main Stats */}
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                            {[
+                                { label: "Search Volume", value: formatVolume(result.searchDemand.volume), icon: "📊" },
+                                { label: "Videos", value: (result.contentSupply.totalSearchResults || result.contentSupply.videoCount).toLocaleString(), icon: "🎬" },
+                                { label: "Competition", value: result.contentSupply.competitionLevel, icon: "⚔️" },
+                                { label: "Trend", value: result.searchDemand.trendType, icon: result.searchDemand.momentum > 0 ? "📈" : result.searchDemand.momentum < 0 ? "📉" : "➡️" },
+                            ].map((stat, i) => (
+                                <div key={i} className="text-center">
+                                    <div className="flex items-center justify-center gap-2 mb-1">
+                                        <span className="text-lg">{stat.icon}</span>
+                                        <p className="text-[var(--text-muted)] text-xs">{stat.label}</p>
+                                    </div>
+                                    <p className="text-xl font-bold text-[var(--text-primary)]">{stat.value}</p>
                                 </div>
-                                <p className="text-2xl font-bold text-[var(--text-primary)]">{stat.value}</p>
+                            ))}
+                        </div>
+
+                        {/* Velocity Bar - Compact Inline */}
+                        <div className="pt-4 border-t border-[var(--border)]">
+                            <div className="flex items-center justify-between gap-4">
+                                <div className="flex items-center gap-6">
+                                    <span className="text-xs text-[var(--text-muted)] font-medium">📅 Uploads:</span>
+                                    {[
+                                        { label: "Today", value: result.contentSupply.videosUploadedToday || 0 },
+                                        { label: "3d", value: result.contentSupply.videosLast3Days || 0 },
+                                        { label: "7d", value: result.contentSupply.videosThisWeek || 0 },
+                                        { label: "30d", value: result.contentSupply.videosThisMonth || 0 },
+                                        { label: "1y", value: result.contentSupply.videosThisYear || 0 },
+                                    ].map((period, i) => (
+                                        <div key={i} className="text-center">
+                                            <p className="text-sm font-bold text-[var(--text-primary)]">{period.value}</p>
+                                            <p className="text-[10px] text-[var(--text-muted)]">{period.label}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    {result.contentSupply.isDormantOpportunity && (
+                                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-medium border border-emerald-500/30">
+                                            🔥 Dormant
+                                        </span>
+                                    )}
+                                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${result.contentSupply.contentActivityLevel === "Hot" ? "bg-red-500/15 text-red-400 border border-red-500/30" :
+                                            result.contentSupply.contentActivityLevel === "Active" ? "bg-amber-500/15 text-amber-400 border border-amber-500/30" :
+                                                result.contentSupply.contentActivityLevel === "Moderate" ? "bg-blue-500/15 text-blue-400 border border-blue-500/30" :
+                                                    result.contentSupply.contentActivityLevel === "Slow" ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30" :
+                                                        "bg-purple-500/15 text-purple-400 border border-purple-500/30"
+                                        }`}>
+                                        {result.contentSupply.contentActivityLevel || "Unknown"}
+                                    </span>
+                                </div>
                             </div>
-                        ))}
+                        </div>
                     </div>
 
                     {/* Long-tail Keywords - Gold Nuggets */}

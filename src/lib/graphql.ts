@@ -121,9 +121,17 @@ export const ANALYZE_KEYWORD_QUERY = `
       }
       contentSupply {
         videoCount
+        totalSearchResults
         contentGapScore
         competitionLevel
         avgCompetitorViews
+        videosUploadedToday
+        videosLast3Days
+        videosThisWeek
+        videosThisMonth
+        videosThisYear
+        isDormantOpportunity
+        contentActivityLevel
       }
       scores {
         opportunity
