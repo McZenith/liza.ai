@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/private/'],
       },
     ],
-    sitemap: 'https://liza.ai/sitemap.xml',
+    sitemap: 'https://liza-ai-nine.vercel.app/sitemap.xml',
   };
 }

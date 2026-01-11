@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { locales } from '@/i18n/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://liza.ai';
+  const baseUrl = 'https://liza-ai-nine.vercel.app';
   
   // Define all public routes
   const routes = [''];

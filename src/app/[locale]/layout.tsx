@@ -24,7 +24,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'metadata' });
-    const baseUrl = 'https://liza.ai';
+    const baseUrl = 'https://liza-ai-nine.vercel.app';
   
   return {
     title: t('title'),
@@ -81,8 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           },
       },
       verification: {
-          // Add your verification codes when you have them
-          google: 'google-site-verification=T6uhccPLnzlBuXgy6uVZ15oeEErUQOYGqFSxHsysckU',
+          google: 'googlea82cfabf12d8b092',
       },
   };
 }
@@ -121,13 +120,13 @@ export default async function LocaleLayout({ children, params }: Props) {
           }}
         />
         {/* Hreflang tags for SEO */}
-        <link rel="alternate" hrefLang="en" href="https://liza.ai/en" />
-        <link rel="alternate" hrefLang="es" href="https://liza.ai/es" />
-        <link rel="alternate" hrefLang="pt" href="https://liza.ai/pt" />
-        <link rel="alternate" hrefLang="fr" href="https://liza.ai/fr" />
-        <link rel="alternate" hrefLang="de" href="https://liza.ai/de" />
-        <link rel="alternate" hrefLang="ja" href="https://liza.ai/ja" />
-        <link rel="alternate" hrefLang="x-default" href="https://liza.ai/en" />
+              <link rel="alternate" hrefLang="en" href="https://liza-ai-nine.vercel.app/en" />
+              <link rel="alternate" hrefLang="es" href="https://liza-ai-nine.vercel.app/es" />
+              <link rel="alternate" hrefLang="pt" href="https://liza-ai-nine.vercel.app/pt" />
+              <link rel="alternate" hrefLang="fr" href="https://liza-ai-nine.vercel.app/fr" />
+              <link rel="alternate" hrefLang="de" href="https://liza-ai-nine.vercel.app/de" />
+              <link rel="alternate" hrefLang="ja" href="https://liza-ai-nine.vercel.app/ja" />
+              <link rel="alternate" hrefLang="x-default" href="https://liza-ai-nine.vercel.app/en" />
 
               {/* JSON-LD Structured Data */}
               <script
@@ -138,12 +137,12 @@ export default async function LocaleLayout({ children, params }: Props) {
                           "@graph": [
                               {
                                   "@type": "Organization",
-                                  "@id": "https://liza.ai/#organization",
+                                  "@id": "https://liza-ai-nine.vercel.app/#organization",
                                   "name": "Liza.ai",
-                                  "url": "https://liza.ai",
+                                  "url": "https://liza-ai-nine.vercel.app",
                                   "logo": {
                                       "@type": "ImageObject",
-                                      "url": "https://liza.ai/logo.png",
+                                      "url": "https://liza-ai-nine.vercel.app/logo.png",
                                       "width": 200,
                                       "height": 200
                                   },
@@ -154,8 +153,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                               },
                               {
                                   "@type": "WebSite",
-                                  "@id": "https://liza.ai/#website",
-                                  "url": "https://liza.ai",
+                                  "@id": "https://liza-ai-nine.vercel.app/#website",
+                                  "url": "https://liza-ai-nine.vercel.app",
                                   "name": "Liza.ai",
                                   "description": "AI-powered social media growth platform for content creators",
                                   "publisher": {
