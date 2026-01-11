@@ -22,23 +22,25 @@ function ParallaxBackground() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-100" />
 
-      {/* Parallax Orbs */}
-      <motion.div
-        style={{ y: y1 }}
-        className="absolute top-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-[#FF4F00] blur-[180px] opacity-15"
-      />
-      <motion.div
-        style={{ y: y2 }}
-        className="absolute top-[30%] right-[10%] w-[600px] h-[600px] rounded-full bg-[#8B5CF6] blur-[200px] opacity-10"
-      />
-      <motion.div
-        style={{ y: y3 }}
-        className="absolute top-[60%] left-[5%] w-[400px] h-[400px] rounded-full bg-[#22D3EE] blur-[150px] opacity-10"
-      />
-      <motion.div
-        style={{ y: y1 }}
-        className="absolute top-[80%] right-[20%] w-[500px] h-[500px] rounded-full bg-[#FF4F00] blur-[180px] opacity-10"
-      />
+      {/* Parallax Orbs - wrapped in relative container for Framer Motion */}
+      <div className="absolute inset-0" style={{ position: 'relative' }}>
+        <motion.div
+          style={{ y: y1 }}
+          className="absolute top-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-[#FF4F00] blur-[180px] opacity-15"
+        />
+        <motion.div
+          style={{ y: y2 }}
+          className="absolute top-[30%] right-[10%] w-[600px] h-[600px] rounded-full bg-[#8B5CF6] blur-[200px] opacity-10"
+        />
+        <motion.div
+          style={{ y: y3 }}
+          className="absolute top-[60%] left-[5%] w-[400px] h-[400px] rounded-full bg-[#22D3EE] blur-[150px] opacity-10"
+        />
+        <motion.div
+          style={{ y: y1 }}
+          className="absolute top-[80%] right-[20%] w-[500px] h-[500px] rounded-full bg-[#FF4F00] blur-[180px] opacity-10"
+        />
+      </div>
     </div>
   );
 }
