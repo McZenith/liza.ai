@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "title": "Liza.ai - AI-Powered Social Media Growth",
+    "description": "Research trending topics, schedule content across platforms, and analyze what works — all from one powerful AI-driven dashboard."
+  },
+  "nav": {
+    "features": "Features",
+    "workflow": "Workflow",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "login": "Log In",
+    "startFree": "Start Free →",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "hero": {
+    "trustBadge": "Trusted by 20,000+ creators worldwide",
+    "headline": "The Complete Toolkit to",
+    "headlineHighlight": "Grow Your Social",
+    "description": "Research trending topics, schedule content across platforms, and analyze what works — all from one powerful AI-driven dashboard.",
+    "ctaPrimary": "Start Free — No Credit Card",
+    "ctaSecondary": "Watch 2-min Demo",
+    "worksWithLabel": "Works with:"
+  },
+  "features": {
+    "sectionLabel": "POWERFUL FEATURES",
+    "headline": "Everything You Need to",
+    "headlineHighlight": "Dominate Social",
+    "research": {
+      "title": "Research",
+      "description": "Find trending topics and high-value keywords before they blow up."
+    },
+    "trends": {
+      "title": "Trends",
+      "description": "Real-time trend tracking across YouTube, TikTok, Instagram, and more."
+    },
+    "content": {
+      "title": "Content",
+      "description": "AI-powered script suggestions, hooks, and outlines that convert."
+    },
+    "scheduling": {
+      "title": "Scheduling",
+      "description": "Plan and queue your content across all platforms from one dashboard."
+    },
+    "analytics": {
+      "title": "Analytics",
+      "description": "Deep insights into performance, audience growth, and engagement."
+    },
+    "engagement": {
+      "title": "Engagement",
+      "description": "Smart comment filtering and response suggestions powered by AI."
+    }
+  },
+  "workflow": {
+    "sectionLabel": "YOUR CONTENT JOURNEY",
+    "headline": "Support at",
+    "headlineHighlight": "Every Stage",
+    "description": "From initial research to post-publication engagement — we've got you covered.",
+    "before": {
+      "phase": "BEFORE",
+      "title": "Before You Create",
+      "subtitle": "Research & Planning",
+      "description": "Discover what your audience wants before spending hours creating content.",
+      "items": ["Keyword Research", "Trend Analysis", "Competitor Intel"]
+    },
+    "during": {
+      "phase": "DURING",
+      "title": "While You Create",
+      "subtitle": "Content Production",
+      "description": "AI-powered tools to help you create better content, faster.",
+      "items": ["AI Scripts", "Thumbnail Testing", "Caption Writer"]
+    },
+    "after": {
+      "phase": "AFTER",
+      "title": "After You Publish",
+      "subtitle": "Growth & Optimization",
+      "description": "Track performance and engage with your growing audience.",
+      "items": ["Analytics Dashboard", "Comment Management", "Content Repurposing"]
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "SUCCESS STORIES",
+    "headline": "Real Creators,",
+    "headlineHighlight": "Real Results",
+    "items": [
+      {
+        "quote": "Liza helped me go from 5K to 100K subs in 8 months. The keyword research alone is worth 10x the price.",
+        "author": "Marcus Chen",
+        "role": "Tech YouTuber",
+        "stat": "+95K subs"
+      },
+      {
+        "quote": "I used to spend 4 hours a week on research. Now it's 20 minutes. Liza's AI is incredibly accurate.",
+        "author": "Sarah Williams",
+        "role": "Lifestyle Creator",
+        "stat": "350% more views"
+      },
+      {
+        "quote": "Managing 12 client accounts was chaos. Now I schedule everything from one dashboard.",
+        "author": "James Rodriguez",
+        "role": "Agency Owner",
+        "stat": "12 clients"
+      }
+    ]
+  },
+  "pricing": {
+    "sectionLabel": "PRICING",
+    "headline": "Start Free,",
+    "headlineHighlight": "Scale Limitless",
+    "description": "No credit card required. Cancel anytime.",
+    "mostPopular": "Most Popular",
+    "plans": {
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "description": "For getting started",
+        "features": ["1 social account", "Basic keyword research", "5 scheduled posts/mo", "Community support"],
+        "cta": "Start Free"
+      },
+      "creator": {
+        "name": "Creator",
+        "price": "$19",
+        "period": "/mo",
+        "description": "For serious creators",
+        "features": ["5 social accounts", "Unlimited research", "Unlimited scheduling", "AI content tools", "Full analytics", "Priority support"],
+        "cta": "Start 14-Day Trial"
+      },
+      "agency": {
+        "name": "Agency",
+        "price": "$79",
+        "period": "/mo",
+        "description": "For teams & agencies",
+        "features": ["Unlimited accounts", "Team collaboration", "White-label reports", "API access", "Dedicated manager"],
+        "cta": "Contact Sales"
+      }
+    }
+  },
+  "cta": {
+    "headline": "Ready to Grow Your",
+    "headlineHighlight": "Audience?",
+    "description": "Join 20,000+ creators using Liza to create better content, faster.",
+    "button": "Start Free — No Credit Card"
+  },
+  "footer": {
+    "description": "AI-powered social media toolkit for creators who want to grow faster.",
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "api": "API",
+    "company": "Company",
+    "about": "About",
+    "blog": "Blog",
+    "careers": "Careers",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "© 2025 Liza.ai. All rights reserved."
+  }
+}

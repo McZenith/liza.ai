@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "title": "Liza.ai - Croissance des Réseaux Sociaux par IA",
+    "description": "Recherchez les sujets tendance, planifiez du contenu sur plusieurs plateformes et analysez ce qui fonctionne — le tout depuis un tableau de bord puissant alimenté par l'IA."
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "workflow": "Workflow",
+    "pricing": "Tarifs",
+    "resources": "Ressources",
+    "login": "Connexion",
+    "startFree": "Commencer Gratuit →",
+    "switchToLight": "Passer en mode clair",
+    "switchToDark": "Passer en mode sombre"
+  },
+  "hero": {
+    "trustBadge": "Plus de 20 000 créateurs nous font confiance",
+    "headline": "La Boîte à Outils Complète pour",
+    "headlineHighlight": "Développer Vos Réseaux",
+    "description": "Recherchez les sujets tendance, planifiez du contenu sur plusieurs plateformes et analysez ce qui fonctionne — le tout depuis un tableau de bord puissant alimenté par l'IA.",
+    "ctaPrimary": "Commencer Gratuit — Sans Carte",
+    "ctaSecondary": "Voir la Démo de 2 min",
+    "worksWithLabel": "Compatible avec :"
+  },
+  "features": {
+    "sectionLabel": "FONCTIONNALITÉS PUISSANTES",
+    "headline": "Tout ce dont Vous Avez Besoin pour",
+    "headlineHighlight": "Dominer les Réseaux",
+    "research": {
+      "title": "Recherche",
+      "description": "Trouvez les sujets tendance et les mots-clés de valeur avant qu'ils n'explosent."
+    },
+    "trends": {
+      "title": "Tendances",
+      "description": "Suivi des tendances en temps réel sur YouTube, TikTok, Instagram et plus."
+    },
+    "content": {
+      "title": "Contenu",
+      "description": "Suggestions de scripts, accroches et plans générés par IA qui convertissent."
+    },
+    "scheduling": {
+      "title": "Planification",
+      "description": "Planifiez et programmez votre contenu sur toutes les plateformes depuis un seul tableau de bord."
+    },
+    "analytics": {
+      "title": "Analytiques",
+      "description": "Insights approfondis sur les performances, la croissance d'audience et l'engagement."
+    },
+    "engagement": {
+      "title": "Engagement",
+      "description": "Filtrage intelligent des commentaires et suggestions de réponses alimentées par IA."
+    }
+  },
+  "workflow": {
+    "sectionLabel": "VOTRE PARCOURS DE CONTENU",
+    "headline": "Support à",
+    "headlineHighlight": "Chaque Étape",
+    "description": "De la recherche initiale à l'engagement post-publication — nous vous accompagnons.",
+    "before": {
+      "phase": "AVANT",
+      "title": "Avant de Créer",
+      "subtitle": "Recherche et Planification",
+      "description": "Découvrez ce que votre audience veut avant de passer des heures à créer du contenu.",
+      "items": ["Recherche de Mots-clés", "Analyse des Tendances", "Veille Concurrentielle"]
+    },
+    "during": {
+      "phase": "PENDANT",
+      "title": "Pendant que Vous Créez",
+      "subtitle": "Production de Contenu",
+      "description": "Outils alimentés par IA pour vous aider à créer un meilleur contenu, plus rapidement.",
+      "items": ["Scripts IA", "Test de Miniatures", "Rédacteur de Légendes"]
+    },
+    "after": {
+      "phase": "APRÈS",
+      "title": "Après Publication",
+      "subtitle": "Croissance et Optimisation",
+      "description": "Suivez les performances et interagissez avec votre audience croissante.",
+      "items": ["Tableau de Bord Analytique", "Gestion des Commentaires", "Réutilisation de Contenu"]
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "HISTOIRES DE SUCCÈS",
+    "headline": "Vrais Créateurs,",
+    "headlineHighlight": "Vrais Résultats",
+    "items": [
+      {
+        "quote": "Liza m'a aidé à passer de 5K à 100K abonnés en 8 mois. La recherche de mots-clés seule vaut 10 fois le prix.",
+        "author": "Marcus Chen",
+        "role": "YouTuber Tech",
+        "stat": "+95K abonnés"
+      },
+      {
+        "quote": "Je passais 4 heures par semaine en recherche. Maintenant c'est 20 minutes. L'IA de Liza est incroyablement précise.",
+        "author": "Sarah Williams",
+        "role": "Créatrice Lifestyle",
+        "stat": "350% plus de vues"
+      },
+      {
+        "quote": "Gérer 12 comptes clients était le chaos. Maintenant je planifie tout depuis un seul tableau de bord.",
+        "author": "James Rodriguez",
+        "role": "Propriétaire d'Agence",
+        "stat": "12 clients"
+      }
+    ]
+  },
+  "pricing": {
+    "sectionLabel": "TARIFS",
+    "headline": "Commencez Gratuit,",
+    "headlineHighlight": "Évoluez Sans Limites",
+    "description": "Sans carte de crédit. Annulez à tout moment.",
+    "mostPopular": "Le Plus Populaire",
+    "plans": {
+      "free": {
+        "name": "Gratuit",
+        "price": "0€",
+        "description": "Pour commencer",
+        "features": ["1 compte social", "Recherche basique", "5 posts planifiés/mois", "Support communautaire"],
+        "cta": "Commencer Gratuit"
+      },
+      "creator": {
+        "name": "Créateur",
+        "price": "19€",
+        "period": "/mois",
+        "description": "Pour créateurs sérieux",
+        "features": ["5 comptes sociaux", "Recherche illimitée", "Planification illimitée", "Outils de contenu IA", "Analytiques complètes", "Support prioritaire"],
+        "cta": "Essai 14 Jours Gratuit"
+      },
+      "agency": {
+        "name": "Agence",
+        "price": "79€",
+        "period": "/mois",
+        "description": "Pour équipes et agences",
+        "features": ["Comptes illimités", "Collaboration d'équipe", "Rapports en marque blanche", "Accès API", "Manager dédié"],
+        "cta": "Contacter les Ventes"
+      }
+    }
+  },
+  "cta": {
+    "headline": "Prêt à Développer Votre",
+    "headlineHighlight": "Audience ?",
+    "description": "Rejoignez plus de 20 000 créateurs utilisant Liza pour créer un meilleur contenu, plus rapidement.",
+    "button": "Commencer Gratuit — Sans Carte"
+  },
+  "footer": {
+    "description": "Boîte à outils de réseaux sociaux alimentée par IA pour les créateurs qui veulent grandir plus vite.",
+    "product": "Produit",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "api": "API",
+    "company": "Entreprise",
+    "about": "À Propos",
+    "blog": "Blog",
+    "careers": "Carrières",
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "copyright": "© 2025 Liza.ai. Tous droits réservés."
+  }
+}

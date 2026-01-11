@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "title": "Liza.ai - AIを活用したソーシャルメディア成長",
+    "description": "トレンドトピックの調査、複数プラットフォームへのコンテンツスケジュール、効果分析 — すべてをAI搭載の強力なダッシュボードから。"
+  },
+  "nav": {
+    "features": "機能",
+    "workflow": "ワークフロー",
+    "pricing": "料金",
+    "resources": "リソース",
+    "login": "ログイン",
+    "startFree": "無料で始める →",
+    "switchToLight": "ライトモードに切り替え",
+    "switchToDark": "ダークモードに切り替え"
+  },
+  "hero": {
+    "trustBadge": "世界中の20,000人以上のクリエイターが信頼",
+    "headline": "ソーシャルを成長させる",
+    "headlineHighlight": "完全なツールキット",
+    "description": "トレンドトピックの調査、複数プラットフォームへのコンテンツスケジュール、効果分析 — すべてをAI搭載の強力なダッシュボードから。",
+    "ctaPrimary": "無料で始める — クレジットカード不要",
+    "ctaSecondary": "2分のデモを見る",
+    "worksWithLabel": "対応プラットフォーム："
+  },
+  "features": {
+    "sectionLabel": "パワフルな機能",
+    "headline": "ソーシャルを制覇するための",
+    "headlineHighlight": "すべてが揃う",
+    "research": {
+      "title": "リサーチ",
+      "description": "トレンドトピックと高価値キーワードを爆発する前に発見。"
+    },
+    "trends": {
+      "title": "トレンド",
+      "description": "YouTube、TikTok、Instagramなどのリアルタイムトレンド追跡。"
+    },
+    "content": {
+      "title": "コンテンツ",
+      "description": "コンバージョンを生むAI搭載のスクリプト、フック、アウトライン提案。"
+    },
+    "scheduling": {
+      "title": "スケジューリング",
+      "description": "1つのダッシュボードから全プラットフォームのコンテンツを計画・予約。"
+    },
+    "analytics": {
+      "title": "アナリティクス",
+      "description": "パフォーマンス、オーディエンス成長、エンゲージメントの詳細な分析。"
+    },
+    "engagement": {
+      "title": "エンゲージメント",
+      "description": "AI搭載のスマートなコメントフィルタリングと返信提案。"
+    }
+  },
+  "workflow": {
+    "sectionLabel": "コンテンツジャーニー",
+    "headline": "すべてのステージで",
+    "headlineHighlight": "サポート",
+    "description": "初期リサーチから公開後のエンゲージメントまで — すべてをカバー。",
+    "before": {
+      "phase": "作成前",
+      "title": "作成する前に",
+      "subtitle": "リサーチ＆プランニング",
+      "description": "コンテンツ作成に何時間も費やす前に、オーディエンスが求めるものを発見。",
+      "items": ["キーワードリサーチ", "トレンド分析", "競合調査"]
+    },
+    "during": {
+      "phase": "作成中",
+      "title": "作成しながら",
+      "subtitle": "コンテンツ制作",
+      "description": "より良いコンテンツをより速く作成するためのAIツール。",
+      "items": ["AIスクリプト", "サムネイルテスト", "キャプションライター"]
+    },
+    "after": {
+      "phase": "公開後",
+      "title": "公開した後",
+      "subtitle": "成長＆最適化",
+      "description": "パフォーマンスを追跡し、成長するオーディエンスとエンゲージ。",
+      "items": ["アナリティクスダッシュボード", "コメント管理", "コンテンツリパーポス"]
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "成功事例",
+    "headline": "リアルなクリエイター、",
+    "headlineHighlight": "リアルな結果",
+    "items": [
+      {
+        "quote": "Lizaのおかげで8ヶ月で5Kから100K登録者に成長できました。キーワードリサーチだけでも価格の10倍の価値があります。",
+        "author": "Marcus Chen",
+        "role": "テックYouTuber",
+        "stat": "+95K登録者"
+      },
+      {
+        "quote": "以前は週4時間リサーチに費やしていました。今は20分です。LizaのAIは驚くほど正確です。",
+        "author": "Sarah Williams",
+        "role": "ライフスタイルクリエイター",
+        "stat": "350%以上の視聴"
+      },
+      {
+        "quote": "12のクライアントアカウント管理は混乱でした。今は1つのダッシュボードからすべてをスケジュール。",
+        "author": "James Rodriguez",
+        "role": "エージェンシーオーナー",
+        "stat": "12クライアント"
+      }
+    ]
+  },
+  "pricing": {
+    "sectionLabel": "料金プラン",
+    "headline": "無料で始めて、",
+    "headlineHighlight": "無制限にスケール",
+    "description": "クレジットカード不要。いつでもキャンセル可能。",
+    "mostPopular": "最も人気",
+    "plans": {
+      "free": {
+        "name": "無料",
+        "price": "¥0",
+        "description": "始める方に",
+        "features": ["1ソーシャルアカウント", "基本キーワードリサーチ", "5投稿/月スケジュール", "コミュニティサポート"],
+        "cta": "無料で始める"
+      },
+      "creator": {
+        "name": "クリエイター",
+        "price": "¥2,900",
+        "period": "/月",
+        "description": "本格的なクリエイター向け",
+        "features": ["5ソーシャルアカウント", "無制限リサーチ", "無制限スケジューリング", "AIコンテンツツール", "フルアナリティクス", "優先サポート"],
+        "cta": "14日間無料トライアル"
+      },
+      "agency": {
+        "name": "エージェンシー",
+        "price": "¥11,900",
+        "period": "/月",
+        "description": "チーム＆エージェンシー向け",
+        "features": ["無制限アカウント", "チームコラボレーション", "ホワイトラベルレポート", "APIアクセス", "専任マネージャー"],
+        "cta": "営業に問い合わせ"
+      }
+    }
+  },
+  "cta": {
+    "headline": "オーディエンスを",
+    "headlineHighlight": "成長させる準備は？",
+    "description": "Lizaを使ってより良いコンテンツをより速く作成している20,000人以上のクリエイターに参加。",
+    "button": "無料で始める — クレジットカード不要"
+  },
+  "footer": {
+    "description": "速く成長したいクリエイターのためのAI搭載ソーシャルメディアツールキット。",
+    "product": "製品",
+    "features": "機能",
+    "pricing": "料金",
+    "api": "API",
+    "company": "会社情報",
+    "about": "会社概要",
+    "blog": "ブログ",
+    "careers": "採用情報",
+    "legal": "法的情報",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "copyright": "© 2025 Liza.ai. All rights reserved."
+  }
+}

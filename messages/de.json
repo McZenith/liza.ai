@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "title": "Liza.ai - KI-gestütztes Social Media Wachstum",
+    "description": "Recherchieren Sie Trendthemen, planen Sie Inhalte über Plattformen hinweg und analysieren Sie, was funktioniert — alles von einem leistungsstarken KI-Dashboard."
+  },
+  "nav": {
+    "features": "Funktionen",
+    "workflow": "Workflow",
+    "pricing": "Preise",
+    "resources": "Ressourcen",
+    "login": "Anmelden",
+    "startFree": "Kostenlos Starten →",
+    "switchToLight": "Zum hellen Modus wechseln",
+    "switchToDark": "Zum dunklen Modus wechseln"
+  },
+  "hero": {
+    "trustBadge": "Über 20.000 Creator vertrauen uns",
+    "headline": "Das Komplettpaket für",
+    "headlineHighlight": "Social Media Wachstum",
+    "description": "Recherchieren Sie Trendthemen, planen Sie Inhalte über Plattformen hinweg und analysieren Sie, was funktioniert — alles von einem leistungsstarken KI-Dashboard.",
+    "ctaPrimary": "Kostenlos Starten — Ohne Kreditkarte",
+    "ctaSecondary": "2-min Demo ansehen",
+    "worksWithLabel": "Funktioniert mit:"
+  },
+  "features": {
+    "sectionLabel": "LEISTUNGSSTARKE FUNKTIONEN",
+    "headline": "Alles was Sie Brauchen um",
+    "headlineHighlight": "Social Media zu Dominieren",
+    "research": {
+      "title": "Recherche",
+      "description": "Finden Sie Trendthemen und wertvolle Keywords bevor sie viral gehen."
+    },
+    "trends": {
+      "title": "Trends",
+      "description": "Echtzeit-Trend-Tracking auf YouTube, TikTok, Instagram und mehr."
+    },
+    "content": {
+      "title": "Inhalte",
+      "description": "KI-gestützte Skript-Vorschläge, Hooks und Gliederungen die konvertieren."
+    },
+    "scheduling": {
+      "title": "Planung",
+      "description": "Planen und timen Sie Ihre Inhalte auf allen Plattformen von einem Dashboard."
+    },
+    "analytics": {
+      "title": "Analysen",
+      "description": "Tiefe Einblicke in Performance, Publikumswachstum und Engagement."
+    },
+    "engagement": {
+      "title": "Engagement",
+      "description": "Intelligente Kommentarfilterung und Antwortvorschläge mit KI."
+    }
+  },
+  "workflow": {
+    "sectionLabel": "IHRE CONTENT-REISE",
+    "headline": "Unterstützung in",
+    "headlineHighlight": "Jeder Phase",
+    "description": "Von der ersten Recherche bis zum Engagement nach der Veröffentlichung — wir haben Sie abgedeckt.",
+    "before": {
+      "phase": "VORHER",
+      "title": "Bevor Sie Erstellen",
+      "subtitle": "Recherche & Planung",
+      "description": "Entdecken Sie was Ihr Publikum will bevor Sie Stunden mit der Erstellung verbringen.",
+      "items": ["Keyword-Recherche", "Trend-Analyse", "Wettbewerber-Intel"]
+    },
+    "during": {
+      "phase": "WÄHREND",
+      "title": "Während Sie Erstellen",
+      "subtitle": "Content-Produktion",
+      "description": "KI-gestützte Tools um bessere Inhalte schneller zu erstellen.",
+      "items": ["KI-Skripte", "Thumbnail-Tests", "Caption-Schreiber"]
+    },
+    "after": {
+      "phase": "DANACH",
+      "title": "Nach der Veröffentlichung",
+      "subtitle": "Wachstum & Optimierung",
+      "description": "Verfolgen Sie die Performance und interagieren Sie mit Ihrem wachsenden Publikum.",
+      "items": ["Analyse-Dashboard", "Kommentar-Management", "Content-Wiederverwendung"]
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "ERFOLGSGESCHICHTEN",
+    "headline": "Echte Creator,",
+    "headlineHighlight": "Echte Ergebnisse",
+    "items": [
+      {
+        "quote": "Liza hat mir geholfen von 5K auf 100K Abonnenten in 8 Monaten zu wachsen. Die Keyword-Recherche allein ist 10x den Preis wert.",
+        "author": "Marcus Chen",
+        "role": "Tech YouTuber",
+        "stat": "+95K Abos"
+      },
+      {
+        "quote": "Ich habe 4 Stunden pro Woche mit Recherche verbracht. Jetzt sind es 20 Minuten. Lizas KI ist unglaublich präzise.",
+        "author": "Sarah Williams",
+        "role": "Lifestyle Creatorin",
+        "stat": "350% mehr Views"
+      },
+      {
+        "quote": "12 Kundenaccounts zu verwalten war Chaos. Jetzt plane ich alles von einem Dashboard.",
+        "author": "James Rodriguez",
+        "role": "Agentur-Inhaber",
+        "stat": "12 Kunden"
+      }
+    ]
+  },
+  "pricing": {
+    "sectionLabel": "PREISE",
+    "headline": "Starten Sie Kostenlos,",
+    "headlineHighlight": "Skalieren Sie Grenzenlos",
+    "description": "Keine Kreditkarte erforderlich. Jederzeit kündbar.",
+    "mostPopular": "Am Beliebtesten",
+    "plans": {
+      "free": {
+        "name": "Kostenlos",
+        "price": "0€",
+        "description": "Zum Einstieg",
+        "features": ["1 Social Account", "Basis-Recherche", "5 geplante Posts/Monat", "Community-Support"],
+        "cta": "Kostenlos Starten"
+      },
+      "creator": {
+        "name": "Creator",
+        "price": "19€",
+        "period": "/Monat",
+        "description": "Für ernsthafte Creator",
+        "features": ["5 Social Accounts", "Unbegrenzte Recherche", "Unbegrenzte Planung", "KI-Content-Tools", "Vollständige Analysen", "Prioritäts-Support"],
+        "cta": "14 Tage Kostenlos Testen"
+      },
+      "agency": {
+        "name": "Agentur",
+        "price": "79€",
+        "period": "/Monat",
+        "description": "Für Teams & Agenturen",
+        "features": ["Unbegrenzte Accounts", "Team-Zusammenarbeit", "White-Label-Berichte", "API-Zugang", "Dedizierter Manager"],
+        "cta": "Vertrieb Kontaktieren"
+      }
+    }
+  },
+  "cta": {
+    "headline": "Bereit Ihr",
+    "headlineHighlight": "Publikum zu Vergrößern?",
+    "description": "Schließen Sie sich über 20.000 Creatoren an die Liza nutzen um besseren Content schneller zu erstellen.",
+    "button": "Kostenlos Starten — Ohne Kreditkarte"
+  },
+  "footer": {
+    "description": "KI-gestütztes Social Media Toolkit für Creator die schneller wachsen wollen.",
+    "product": "Produkt",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "api": "API",
+    "company": "Unternehmen",
+    "about": "Über Uns",
+    "blog": "Blog",
+    "careers": "Karriere",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "copyright": "© 2025 Liza.ai. Alle Rechte vorbehalten."
+  }
+}

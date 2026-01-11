@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "title": "Liza.ai - Crescimento de Mídias Sociais com IA",
+    "description": "Pesquise tópicos em alta, agende conteúdo em várias plataformas e analise o que funciona — tudo em um poderoso painel impulsionado por IA."
+  },
+  "nav": {
+    "features": "Recursos",
+    "workflow": "Fluxo de Trabalho",
+    "pricing": "Preços",
+    "resources": "Materiais",
+    "login": "Entrar",
+    "startFree": "Começar Grátis →",
+    "switchToLight": "Mudar para modo claro",
+    "switchToDark": "Mudar para modo escuro"
+  },
+  "hero": {
+    "trustBadge": "Mais de 20.000 criadores confiam em nós",
+    "headline": "O Kit Completo para",
+    "headlineHighlight": "Crescer nas Redes Sociais",
+    "description": "Pesquise tópicos em alta, agende conteúdo em várias plataformas e analise o que funciona — tudo em um poderoso painel impulsionado por IA.",
+    "ctaPrimary": "Comece Grátis — Sem Cartão",
+    "ctaSecondary": "Assistir Demo de 2 min",
+    "worksWithLabel": "Funciona com:"
+  },
+  "features": {
+    "sectionLabel": "RECURSOS PODEROSOS",
+    "headline": "Tudo que Você Precisa para",
+    "headlineHighlight": "Dominar as Redes",
+    "research": {
+      "title": "Pesquisa",
+      "description": "Encontre tópicos em alta e palavras-chave valiosas antes que explodam."
+    },
+    "trends": {
+      "title": "Tendências",
+      "description": "Rastreamento de tendências em tempo real no YouTube, TikTok, Instagram e mais."
+    },
+    "content": {
+      "title": "Conteúdo",
+      "description": "Sugestões de roteiros, ganchos e esquemas com IA que convertem."
+    },
+    "scheduling": {
+      "title": "Agendamento",
+      "description": "Planeje e agende seu conteúdo em todas as plataformas de um único painel."
+    },
+    "analytics": {
+      "title": "Análises",
+      "description": "Insights profundos sobre desempenho, crescimento de audiência e engajamento."
+    },
+    "engagement": {
+      "title": "Engajamento",
+      "description": "Filtragem inteligente de comentários e sugestões de resposta com IA."
+    }
+  },
+  "workflow": {
+    "sectionLabel": "SUA JORNADA DE CONTEÚDO",
+    "headline": "Suporte em",
+    "headlineHighlight": "Cada Etapa",
+    "description": "Da pesquisa inicial ao engajamento pós-publicação — nós cuidamos de tudo.",
+    "before": {
+      "phase": "ANTES",
+      "title": "Antes de Criar",
+      "subtitle": "Pesquisa e Planejamento",
+      "description": "Descubra o que sua audiência quer antes de passar horas criando conteúdo.",
+      "items": ["Pesquisa de Keywords", "Análise de Tendências", "Intel de Concorrentes"]
+    },
+    "during": {
+      "phase": "DURANTE",
+      "title": "Enquanto Cria",
+      "subtitle": "Produção de Conteúdo",
+      "description": "Ferramentas com IA para ajudar você a criar melhor conteúdo, mais rápido.",
+      "items": ["Scripts com IA", "Teste de Thumbnails", "Escritor de Legendas"]
+    },
+    "after": {
+      "phase": "DEPOIS",
+      "title": "Depois de Publicar",
+      "subtitle": "Crescimento e Otimização",
+      "description": "Rastreie o desempenho e interaja com sua audiência em crescimento.",
+      "items": ["Painel de Análises", "Gestão de Comentários", "Reaproveitamento de Conteúdo"]
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "HISTÓRIAS DE SUCESSO",
+    "headline": "Criadores Reais,",
+    "headlineHighlight": "Resultados Reais",
+    "items": [
+      {
+        "quote": "Liza me ajudou a ir de 5K para 100K inscritos em 8 meses. Só a pesquisa de keywords vale 10x o preço.",
+        "author": "Marcus Chen",
+        "role": "YouTuber de Tech",
+        "stat": "+95K inscritos"
+      },
+      {
+        "quote": "Eu costumava gastar 4 horas por semana pesquisando. Agora são 20 minutos. A IA da Liza é incrivelmente precisa.",
+        "author": "Sarah Williams",
+        "role": "Criadora de Lifestyle",
+        "stat": "350% mais views"
+      },
+      {
+        "quote": "Gerenciar 12 contas de clientes era um caos. Agora eu agendo tudo de um único painel.",
+        "author": "James Rodriguez",
+        "role": "Dono de Agência",
+        "stat": "12 clientes"
+      }
+    ]
+  },
+  "pricing": {
+    "sectionLabel": "PREÇOS",
+    "headline": "Comece Grátis,",
+    "headlineHighlight": "Escale Sem Limites",
+    "description": "Sem cartão de crédito. Cancele quando quiser.",
+    "mostPopular": "Mais Popular",
+    "plans": {
+      "free": {
+        "name": "Grátis",
+        "price": "$0",
+        "description": "Para começar",
+        "features": ["1 conta social", "Pesquisa básica", "5 posts agendados/mês", "Suporte comunitário"],
+        "cta": "Começar Grátis"
+      },
+      "creator": {
+        "name": "Criador",
+        "price": "$19",
+        "period": "/mês",
+        "description": "Para criadores sérios",
+        "features": ["5 contas sociais", "Pesquisa ilimitada", "Agendamento ilimitado", "Ferramentas de conteúdo IA", "Análises completas", "Suporte prioritário"],
+        "cta": "Teste 14 Dias Grátis"
+      },
+      "agency": {
+        "name": "Agência",
+        "price": "$79",
+        "period": "/mês",
+        "description": "Para times e agências",
+        "features": ["Contas ilimitadas", "Colaboração em equipe", "Relatórios white-label", "Acesso API", "Gerente dedicado"],
+        "cta": "Contatar Vendas"
+      }
+    }
+  },
+  "cta": {
+    "headline": "Pronto para Crescer sua",
+    "headlineHighlight": "Audiência?",
+    "description": "Junte-se a mais de 20.000 criadores usando Liza para criar melhor conteúdo, mais rápido.",
+    "button": "Comece Grátis — Sem Cartão"
+  },
+  "footer": {
+    "description": "Kit de mídias sociais com IA para criadores que querem crescer mais rápido.",
+    "product": "Produto",
+    "features": "Recursos",
+    "pricing": "Preços",
+    "api": "API",
+    "company": "Empresa",
+    "about": "Sobre",
+    "blog": "Blog",
+    "careers": "Carreiras",
+    "legal": "Legal",
+    "privacy": "Privacidade",
+    "terms": "Termos",
+    "copyright": "© 2025 Liza.ai. Todos os direitos reservados."
+  }
+}

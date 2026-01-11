@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "title": "Liza.ai - Crecimiento de Redes Sociales con IA",
+    "description": "Investiga temas en tendencia, programa contenido en múltiples plataformas y analiza qué funciona — todo desde un potente panel impulsado por IA."
+  },
+  "nav": {
+    "features": "Funciones",
+    "workflow": "Flujo de Trabajo",
+    "pricing": "Precios",
+    "resources": "Recursos",
+    "login": "Iniciar Sesión",
+    "startFree": "Empezar Gratis →",
+    "switchToLight": "Cambiar a modo claro",
+    "switchToDark": "Cambiar a modo oscuro"
+  },
+  "hero": {
+    "trustBadge": "Más de 20,000 creadores confían en nosotros",
+    "headline": "El Kit Completo para",
+    "headlineHighlight": "Crecer en Redes Sociales",
+    "description": "Investiga temas en tendencia, programa contenido en múltiples plataformas y analiza qué funciona — todo desde un potente panel impulsado por IA.",
+    "ctaPrimary": "Empieza Gratis — Sin Tarjeta",
+    "ctaSecondary": "Ver Demo de 2 min",
+    "worksWithLabel": "Funciona con:"
+  },
+  "features": {
+    "sectionLabel": "FUNCIONES POTENTES",
+    "headline": "Todo lo que Necesitas para",
+    "headlineHighlight": "Dominar las Redes",
+    "research": {
+      "title": "Investigación",
+      "description": "Encuentra temas en tendencia y palabras clave de alto valor antes de que exploten."
+    },
+    "trends": {
+      "title": "Tendencias",
+      "description": "Seguimiento de tendencias en tiempo real en YouTube, TikTok, Instagram y más."
+    },
+    "content": {
+      "title": "Contenido",
+      "description": "Sugerencias de guiones, ganchos y esquemas potenciados por IA que convierten."
+    },
+    "scheduling": {
+      "title": "Programación",
+      "description": "Planifica y programa tu contenido en todas las plataformas desde un solo panel."
+    },
+    "analytics": {
+      "title": "Analíticas",
+      "description": "Información profunda sobre rendimiento, crecimiento de audiencia y engagement."
+    },
+    "engagement": {
+      "title": "Interacción",
+      "description": "Filtrado inteligente de comentarios y sugerencias de respuesta con IA."
+    }
+  },
+  "workflow": {
+    "sectionLabel": "TU VIAJE DE CONTENIDO",
+    "headline": "Soporte en",
+    "headlineHighlight": "Cada Etapa",
+    "description": "Desde la investigación inicial hasta el engagement post-publicación — te tenemos cubierto.",
+    "before": {
+      "phase": "ANTES",
+      "title": "Antes de Crear",
+      "subtitle": "Investigación y Planificación",
+      "description": "Descubre lo que tu audiencia quiere antes de pasar horas creando contenido.",
+      "items": ["Investigación de Keywords", "Análisis de Tendencias", "Intel de Competencia"]
+    },
+    "during": {
+      "phase": "DURANTE",
+      "title": "Mientras Creas",
+      "subtitle": "Producción de Contenido",
+      "description": "Herramientas con IA para ayudarte a crear mejor contenido, más rápido.",
+      "items": ["Guiones con IA", "Prueba de Miniaturas", "Escritor de Captions"]
+    },
+    "after": {
+      "phase": "DESPUÉS",
+      "title": "Después de Publicar",
+      "subtitle": "Crecimiento y Optimización",
+      "description": "Rastrea el rendimiento e interactúa con tu audiencia en crecimiento.",
+      "items": ["Panel de Analíticas", "Gestión de Comentarios", "Reutilización de Contenido"]
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "HISTORIAS DE ÉXITO",
+    "headline": "Creadores Reales,",
+    "headlineHighlight": "Resultados Reales",
+    "items": [
+      {
+        "quote": "Liza me ayudó a pasar de 5K a 100K suscriptores en 8 meses. Solo la investigación de keywords vale 10 veces el precio.",
+        "author": "Marcus Chen",
+        "role": "YouTuber de Tech",
+        "stat": "+95K subs"
+      },
+      {
+        "quote": "Solía pasar 4 horas a la semana investigando. Ahora son 20 minutos. La IA de Liza es increíblemente precisa.",
+        "author": "Sarah Williams",
+        "role": "Creadora de Lifestyle",
+        "stat": "350% más vistas"
+      },
+      {
+        "quote": "Manejar 12 cuentas de clientes era un caos. Ahora programo todo desde un solo panel.",
+        "author": "James Rodriguez",
+        "role": "Dueño de Agencia",
+        "stat": "12 clientes"
+      }
+    ]
+  },
+  "pricing": {
+    "sectionLabel": "PRECIOS",
+    "headline": "Empieza Gratis,",
+    "headlineHighlight": "Escala Sin Límites",
+    "description": "Sin tarjeta de crédito. Cancela cuando quieras.",
+    "mostPopular": "Más Popular",
+    "plans": {
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "description": "Para empezar",
+        "features": ["1 cuenta social", "Investigación básica", "5 posts programados/mes", "Soporte comunitario"],
+        "cta": "Empezar Gratis"
+      },
+      "creator": {
+        "name": "Creador",
+        "price": "$19",
+        "period": "/mes",
+        "description": "Para creadores serios",
+        "features": ["5 cuentas sociales", "Investigación ilimitada", "Programación ilimitada", "Herramientas de contenido IA", "Analíticas completas", "Soporte prioritario"],
+        "cta": "Prueba 14 Días Gratis"
+      },
+      "agency": {
+        "name": "Agencia",
+        "price": "$79",
+        "period": "/mes",
+        "description": "Para equipos y agencias",
+        "features": ["Cuentas ilimitadas", "Colaboración en equipo", "Reportes white-label", "Acceso API", "Manager dedicado"],
+        "cta": "Contactar Ventas"
+      }
+    }
+  },
+  "cta": {
+    "headline": "¿Listo para Crecer tu",
+    "headlineHighlight": "Audiencia?",
+    "description": "Únete a más de 20,000 creadores usando Liza para crear mejor contenido, más rápido.",
+    "button": "Empieza Gratis — Sin Tarjeta"
+  },
+  "footer": {
+    "description": "Kit de redes sociales con IA para creadores que quieren crecer más rápido.",
+    "product": "Producto",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "api": "API",
+    "company": "Empresa",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "careers": "Carreras",
+    "legal": "Legal",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "copyright": "© 2025 Liza.ai. Todos los derechos reservados."
+  }
+}
