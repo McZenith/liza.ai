@@ -129,6 +129,7 @@ function LanguageSwitcher() {
 
 function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('nav');
 
@@ -146,6 +147,13 @@ function Navigation() {
     }
   };
 
+  const navLinks = [
+    { label: t('features'), href: '#features' },
+    { label: t('workflow'), href: '#workflow' },
+    { label: t('pricing'), href: '#pricing' },
+    { label: t('resources'), href: '#resources' },
+  ];
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -153,30 +161,27 @@ function Navigation() {
       transition={{ duration: 0.6 }}
       aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${scrolled
-        ? "bg-[var(--nav-bg)] backdrop-blur-xl border-[var(--nav-border)] py-3 shadow-lg"
-        : "bg-transparent border-transparent py-5"
+        ? "bg-[var(--nav-bg)] backdrop-blur-xl border-[var(--nav-border)] py-2 md:py-3 shadow-lg"
+        : "bg-transparent border-transparent py-3 md:py-5"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
+        {/* Logo */}
         <motion.a
           href="#"
           aria-label="Liza.ai - Home"
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 md:gap-3"
           whileHover={{ scale: 1.02 }}
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF4F00] to-[#FF7A33] flex items-center justify-center shadow-lg shadow-orange-500/30">
-            <span className="text-[var(--text-primary)] font-bold text-xl">L</span>
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-[#FF4F00] to-[#FF7A33] flex items-center justify-center shadow-lg shadow-orange-500/30">
+            <span className="text-white font-bold text-lg md:text-xl">L</span>
           </div>
-          <span className="text-2xl font-bold text-[var(--text-primary)]">Liza<span className="text-[#FF4F00]">.ai</span></span>
+          <span className="text-xl md:text-2xl font-bold text-[var(--text-primary)]">Liza<span className="text-[#FF4F00]">.ai</span></span>
         </motion.a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {[
-            { label: t('features'), href: '#features' },
-            { label: t('workflow'), href: '#workflow' },
-            { label: t('pricing'), href: '#pricing' },
-            { label: t('resources'), href: '#resources' },
-          ].map((item) => (
+        {/* Desktop Nav Links */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navLinks.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -188,8 +193,9 @@ function Navigation() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
-          {/* Language Switcher */}
+        {/* Right side controls */}
+        <div className="flex items-center gap-2 md:gap-3">
+          {/* Language Switcher - compact on mobile */}
           <LanguageSwitcher />
 
           {/* Theme Toggle */}
@@ -197,11 +203,11 @@ function Navigation() {
             onClick={toggleTheme}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="theme-toggle"
-            title={resolvedTheme === "dark" ? t('switchToLight') : t('switchToDark')}
+            className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center bg-[var(--bg-surface)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors"
+            aria-label={resolvedTheme === "dark" ? t('switchToLight') : t('switchToDark')}
           >
             {resolvedTheme === "dark" ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="5" />
                 <line x1="12" y1="1" x2="12" y2="3" />
                 <line x1="12" y1="21" x2="12" y2="23" />
@@ -213,24 +219,81 @@ function Navigation() {
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
               </svg>
             ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             )}
           </motion.button>
 
-          <button className="hidden md:block text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium transition">
+          {/* Desktop: Login + CTA */}
+          <button className="hidden md:block text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium transition px-3">
             {t('login')}
           </button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-primary text-sm py-3 px-6"
+            className="hidden sm:block btn-primary text-xs md:text-sm py-2 md:py-3 px-4 md:px-6"
           >
             {t('startFree')}
           </motion.button>
+
+          {/* Mobile: Hamburger Menu */}
+          <motion.button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            whileTap={{ scale: 0.95 }}
+            className="lg:hidden w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center bg-[var(--bg-surface)] border border-[var(--border)] text-[var(--text-secondary)]"
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </motion.button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="lg:hidden bg-[var(--bg-elevated)] border-t border-[var(--border)]"
+        >
+          <div className="max-w-7xl mx-auto px-4 py-4 space-y-2">
+            {navLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-3 px-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg font-medium transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="pt-2 border-t border-[var(--border)] mt-2 flex flex-col gap-2">
+              <button className="py-3 px-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg font-medium transition text-left">
+                {t('login')}
+              </button>
+              <motion.button
+                whileTap={{ scale: 0.98 }}
+                className="btn-primary text-sm py-3 px-6 w-full"
+              >
+                {t('startFree')}
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 }
@@ -250,20 +313,20 @@ function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.6], [1, 0.95]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section ref={ref} className="snap-section relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden">
       <motion.div
         style={{ y, opacity, scale }}
-        className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+        className="relative z-10 max-w-5xl mx-auto px-4 md:px-6 text-center"
       >
         {/* Trust Badge */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="trust-badge mb-8"
+          className="trust-badge mb-6 md:mb-8 text-xs md:text-sm"
         >
           <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
-          <span className="text-[var(--text-secondary)] text-sm font-medium">{t('trustBadge')}</span>
+          <span className="text-[var(--text-secondary)] font-medium">{t('trustBadge')}</span>
         </motion.div>
 
         {/* Main Headline */}
@@ -271,7 +334,7 @@ function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] mb-6 leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--text-primary)] mb-4 md:mb-6 leading-[1.1] tracking-tight"
         >
           {t('headline')}
           <br />
@@ -283,7 +346,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-xl text-[var(--text-secondary)] mb-12 max-w-2xl mx-auto leading-relaxed"
+          className="text-base md:text-lg lg:text-xl text-[var(--text-secondary)] mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed px-2"
         >
           {t('description')}
         </motion.p>
@@ -293,21 +356,21 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16"
         >
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(255, 79, 0, 0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="btn-primary text-lg px-10 py-5 animate-pulse-glow"
+            className="btn-primary text-base md:text-lg px-6 md:px-10 py-4 md:py-5 w-full sm:w-auto animate-pulse-glow"
           >
             {t('ctaPrimary')}
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-secondary text-lg px-10 py-5 flex items-center gap-3"
+            className="btn-secondary text-base md:text-lg px-6 md:px-10 py-4 md:py-5 flex items-center justify-center gap-3 w-full sm:w-auto"
           >
-            <span className="w-10 h-10 rounded-full bg-[var(--bg-surface)] border border-[var(--border)] flex items-center justify-center text-[#FF4F00]">▶</span>
+            <span className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[var(--bg-surface)] border border-[var(--border)] flex items-center justify-center text-[#FF4F00] text-sm md:text-base">▶</span>
             {t('ctaSecondary')}
           </motion.button>
         </motion.div>
@@ -317,16 +380,16 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="flex items-center justify-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-2 md:gap-4"
         >
-          <span className="text-[var(--text-muted)] text-sm mr-2">{t('worksWithLabel')}</span>
+          <span className="text-[var(--text-muted)] text-xs md:text-sm mr-1 md:mr-2 w-full sm:w-auto mb-2 sm:mb-0">{t('worksWithLabel')}</span>
           {[
-            { name: "YouTube", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>, color: "#FF0000" },
-            { name: "TikTok", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" /></svg>, color: "#00F2EA" },
-            { name: "Instagram", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>, color: "#E4405F" },
-            { name: "X", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, color: "var(--text-primary)" },
-            { name: "LinkedIn", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>, color: "#0A66C2" },
-            { name: "Airbnb", icon: <Image src="/airbnb.png" alt="Airbnb" width={20} height={20} />, color: "#FF5A5F" },
+            { name: "YouTube", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>, color: "#FF0000" },
+            { name: "TikTok", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" /></svg>, color: "#00F2EA" },
+            { name: "Instagram", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>, color: "#E4405F" },
+            { name: "X", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 md:w-4 md:h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, color: "var(--text-primary)" },
+            { name: "LinkedIn", icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>, color: "#0A66C2" },
+            { name: "Airbnb", icon: <Image src="/airbnb.png" alt="Airbnb" width={20} height={20} className="w-4 h-4 md:w-5 md:h-5" />, color: "#FF5A5F" },
           ].map((platform, i) => (
             <motion.div
               key={platform.name}
@@ -334,7 +397,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 + i * 0.1 }}
               whileHover={{ scale: 1.1, y: -2 }}
-              className="w-11 h-11 rounded-xl bg-[var(--bg-surface)] border border-[var(--border)] flex items-center justify-center cursor-pointer transition-colors hover:border-[var(--border-light)]"
+              className="w-9 h-9 md:w-11 md:h-11 rounded-xl bg-[var(--bg-surface)] border border-[var(--border)] flex items-center justify-center cursor-pointer transition-colors hover:border-[var(--border-light)]"
               style={{ color: platform.color }}
               title={platform.name}
             >
@@ -382,7 +445,7 @@ function FeaturesSection() {
   ];
 
   return (
-    <section id="features" ref={ref} className="relative py-32 z-10">
+    <section id="features" ref={ref} className="snap-section relative py-32 z-10">
       <motion.div style={{ y }} className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -441,7 +504,7 @@ function WorkflowSection() {
   ];
 
   return (
-    <section id="workflow" ref={ref} className="relative py-32 section-alt z-10">
+    <section id="workflow" ref={ref} className="snap-section relative py-32 section-alt z-10">
       <motion.div style={{ y }} className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -519,7 +582,7 @@ function TestimonialsSection() {
   const items = t.raw('items') as Array<{ quote: string; author: string; role: string; stat: string }>;
 
   return (
-    <section ref={ref} className="relative py-32 z-10">
+    <section ref={ref} className="snap-section relative py-32 z-10">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -574,7 +637,7 @@ function PricingSection() {
   ];
 
   return (
-    <section id="pricing" ref={ref} className="relative py-32 section-alt z-10">
+    <section id="pricing" ref={ref} className="snap-section relative py-32 section-alt z-10">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -644,7 +707,7 @@ function FinalCTA() {
   const t = useTranslations('cta');
 
   return (
-    <section ref={ref} className="relative py-32 z-10">
+    <section ref={ref} className="snap-section relative py-32 z-10">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -756,14 +819,14 @@ export default function Home() {
         <ParallaxBackground />
         <Navigation />
         <Hero />
-      <FeaturesSection />
-      <WorkflowSection />
-      <TestimonialsSection />
-      <PricingSection />
-      <FinalCTA />
-      <Footer />
-      <ScrollToTop />
-    </main>
+        <FeaturesSection />
+        <WorkflowSection />
+        <TestimonialsSection />
+        <PricingSection />
+        <FinalCTA />
+        <Footer />
+        <ScrollToTop />
+      </main>
     </>
   );
 }

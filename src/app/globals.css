@@ -17,7 +17,7 @@
   --bg-hover: #242432;
   --text-primary: #FFFFFF;
   --text-secondary: #A1A1AA;
-  --text-muted: #71717A;
+  --text-muted: #9CA3AF;
   --border: #27272A;
   --border-light: #3F3F46;
 
@@ -48,7 +48,7 @@
   --bg-hover: #E2E8F0;
   --text-primary: #0F172A;
   --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  --text-muted: #64748B;
   --border: #E2E8F0;
   --border-light: #CBD5E1;
 
@@ -77,6 +77,7 @@ html {
   background: var(--bg-base);
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  scroll-snap-type: y proximity;
 }
 
 body {
@@ -95,6 +96,11 @@ body {
     min-height: 100vh;
     position: relative;
   }
+/* ===== SCROLL SNAP SECTIONS ===== */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
   
   /* ===== BUTTONS ===== */
   .btn-primary {
@@ -245,15 +251,18 @@ body {
   
   .animate-float {
     animation: float 8s ease-in-out infinite;
+    will-change: transform;
   }
   
   .animate-pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
+    will-change: box-shadow;
   }
   
   .animate-gradient {
     background-size: 200% 200%;
     animation: gradient-shift 4s ease infinite;
+    will-change: background-position;
   }
   
   /* ===== GRID PATTERN ===== */
