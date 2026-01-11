@@ -229,3 +229,60 @@ const LONG_TAIL_SUBSCRIPTION = `
     }
   }
 `;
+
+// Explore tab queries
+export const GET_TRENDING_VIDEOS_QUERY = `
+  query GetTrendingVideos($regionCode: String) {
+    trendingVideos(regionCode: $regionCode) {
+      videoId
+      title
+      channelTitle
+      viewCount
+      likeCount
+      thumbnailMedium
+      thumbnailHigh
+      publishedAt
+    }
+  }
+`;
+
+export const GET_TRENDING_KEYWORDS_QUERY = `
+  query GetTrendingKeywords($regionCode: String) {
+    trendingKeywords(regionCode: $regionCode) {
+      keyword
+      grade
+      opportunity
+      difficulty
+      searchVolume
+      trendingVideoCount
+      topVideoTitle
+      topVideoThumbnail
+      analyzedAt
+    }
+  }
+`;
+
+// Trending keyword summary interface
+export interface TrendingKeyword {
+  keyword: string;
+  grade: string;
+  opportunity: number;
+  difficulty: number;
+  searchVolume: number;
+  trendingVideoCount: number;
+  topVideoTitle?: string;
+  topVideoThumbnail?: string;
+  analyzedAt: string;
+}
+
+// Trending video interface (from cache)
+export interface TrendingVideo {
+  videoId: string;
+  title: string;
+  channelTitle: string;
+  viewCount: number;
+  likeCount: number;
+  thumbnailMedium?: string;
+  thumbnailHigh?: string;
+  publishedAt: string;
+}

@@ -129,7 +129,11 @@ const gradeConfig: Record<string, { bg: string; text: string; border: string; gl
     F: { bg: "bg-red-500/15", text: "text-red-400", border: "border-red-500/40", glow: "shadow-red-500/20" },
 };
 
-export default function ResearchContent() {
+interface ResearchContentProps {
+    initialKeyword?: string | null;
+}
+
+export default function ResearchContent({ initialKeyword }: ResearchContentProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -146,6 +150,35 @@ export default function ResearchContent() {
     const debouncedQuery = useDebounce(searchQuery, 300);
     const unsubscribeRef = useRef<(() => void) | null>(null);
     const cartRef = useRef<HTMLButtonElement>(null);
+    const hasInitialized = useRef(false);
+
+    // Auto-analyze initial keyword from Explore tab
+    useEffect(() => {
+        if (initialKeyword && !hasInitialized.current) {
+            hasInitialized.current = true;
+            setSearchQuery(initialKeyword);
+            // Trigger analysis after setting the query
+            const analyzeInitial = async () => {
+                setAnalyzing(true);
+                setError(null);
+                setResult(null);
+                try {
+                    const response = await graphqlFetch<{ analyzeKeyword: KeywordAnalysisResult }>(
+                        ANALYZE_KEYWORD_QUERY,
+                        { keyword: initialKeyword }
+                    );
+                    if (response.data?.analyzeKeyword) {
+                        setResult(response.data.analyzeKeyword);
+                    }
+                } catch (err) {
+                    setError(err instanceof Error ? err.message : "Analysis failed");
+                } finally {
+                    setAnalyzing(false);
+                }
+            };
+            analyzeInitial();
+        }
+    }, [initialKeyword]);
 
     // Cleanup subscription on unmount
     useEffect(() => {

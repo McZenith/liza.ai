@@ -18,15 +18,28 @@ interface SidebarProps {
     schedulePosts: string;
     viewAnalytics: string;
     manageAccounts: string;
+    explore?: string;
+    settings?: string;
   };
+  activeTab?: "explore" | "research";
+  onTabChange?: (tab: "explore" | "research") => void;
+  onOpenSettings?: () => void;
 }
 
 const navItems = [
   {
+    key: "explore",
+    icon: "🔥",
+    color: "#FF4F00",
+    isTab: true,
+    tab: "explore" as const,
+  },
+  {
     key: "researchContent",
     icon: "🔍",
-    href: "/dashboard",
     color: "#8B5CF6",
+    isTab: true,
+    tab: "research" as const,
   },
   {
     key: "schedulePosts",
@@ -48,7 +61,7 @@ const navItems = [
   },
 ];
 
-export default function DashboardSidebar({ user, translations }: SidebarProps) {
+export default function DashboardSidebar({ user, translations, activeTab, onTabChange, onOpenSettings }: SidebarProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
@@ -56,6 +69,12 @@ export default function DashboardSidebar({ user, translations }: SidebarProps) {
   const handleSignOut = () => {
     // TODO: Implement actual sign out
     window.location.href = `/${locale}`;
+  };
+
+  const handleNavClick = (item: typeof navItems[0]) => {
+    if (item.isTab && item.tab && onTabChange) {
+      onTabChange(item.tab);
+    }
   };
 
   return (
@@ -122,9 +141,44 @@ export default function DashboardSidebar({ user, translations }: SidebarProps) {
           {/* Navigation */}
           <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
             {navItems.map((item) => {
-              const href = `/${locale}${item.href}`;
-              const isActive = pathname === href || (item.href === "/dashboard" && pathname === `/${locale}/dashboard`);
-              
+              const href = item.href ? `/${locale}${item.href}` : `/${locale}/dashboard`;
+              const isActive = item.isTab
+                ? (activeTab === item.tab || (!activeTab && item.tab === "explore"))
+                : pathname === href;
+
+              const NavContent = (
+                <>
+                  <span
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg transition-transform group-hover:scale-110 ${isActive ? "" : "bg-[var(--bg-surface)]"
+                      }`}
+                    style={isActive ? { background: `${item.color}20` } : {}}
+                  >
+                    {item.icon}
+                  </span>
+                  {!collapsed && (
+                    <span className="font-medium">
+                      {translations[item.key as keyof typeof translations] || item.key}
+                    </span>
+                  )}
+                </>
+              );
+
+              if (item.isTab) {
+                return (
+                  <button
+                    key={item.key}
+                    onClick={() => handleNavClick(item)}
+                    className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all group ${isActive
+                        ? "bg-[var(--primary)] bg-opacity-10 text-[var(--primary)]"
+                        : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
+                      }`}
+                    style={isActive ? { backgroundColor: `${item.color}15`, color: item.color } : {}}
+                  >
+                    {NavContent}
+                  </button>
+                );
+              }
+
               return (
                 <Link
                   key={item.key}
@@ -135,23 +189,30 @@ export default function DashboardSidebar({ user, translations }: SidebarProps) {
                       : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
                   }`}
                 >
-                  <span
-                    className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg transition-transform group-hover:scale-110 ${
-                      isActive ? "" : "bg-[var(--bg-surface)]"
-                    }`}
-                    style={isActive ? { background: `${item.color}20` } : {}}
-                  >
-                    {item.icon}
-                  </span>
-                  {!collapsed && (
-                    <span className="font-medium">
-                      {translations[item.key as keyof typeof translations]}
-                    </span>
-                  )}
+                  {NavContent}
                 </Link>
               );
             })}
           </nav>
+
+          {/* Settings Button */}
+          {onOpenSettings && (
+            <div className="px-3 pb-2">
+              <button
+                onClick={onOpenSettings}
+                className="w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] group"
+              >
+                <span className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[var(--bg-surface)] transition-transform group-hover:scale-110">
+                  ⚙️
+                </span>
+                {!collapsed && (
+                  <span className="font-medium">
+                    {translations.settings || "Settings"}
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
 
           {/* User Section */}
           <div className="p-4 border-t border-[var(--border)]">

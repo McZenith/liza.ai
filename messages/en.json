@@ -178,6 +178,18 @@
     "researchContent": "Research Content",
     "schedulePosts": "Schedule Posts",
     "viewAnalytics": "View Analytics",
-    "manageAccounts": "Manage Accounts"
+    "manageAccounts": "Manage Accounts",
+    "explore": "Explore",
+    "research": "Research",
+    "trendingKeywords": "Trending Keywords",
+    "trendingVideos": "Trending Videos",
+    "recentSearches": "Your Recent Searches",
+    "noRecentSearches": "No recent searches yet. Start exploring!",
+    "exploreSubtitle": "Discover trending topics and opportunities in your niche",
+    "preferences": "Preferences",
+    "selectNiche": "Select Your Niche",
+    "selectRegion": "Select Region",
+    "autoDetected": "Auto-detected",
+    "settings": "Settings"
   }
 }
