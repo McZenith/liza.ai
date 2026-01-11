@@ -63,11 +63,9 @@ const gradeConfig: Record<string, { bg: string; text: string; border: string }> 
 
 interface ExploreContentProps {
   onKeywordClick: (keyword: string) => void;
-  autoOpenPreferences?: boolean;
-  onPreferencesOpened?: () => void;
 }
 
-export default function ExploreContent({ onKeywordClick, autoOpenPreferences, onPreferencesOpened }: ExploreContentProps) {
+export default function ExploreContent({ onKeywordClick }: ExploreContentProps) {
   const [trendingKeywords, setTrendingKeywords] = useState<TrendingKeyword[]>([]);
   const [trendingVideos, setTrendingVideos] = useState<TrendingVideo[]>([]);
   const [searchHistory, setSearchHistory] = useState<SearchHistoryItem[]>([]);
@@ -76,17 +74,8 @@ export default function ExploreContent({ onKeywordClick, autoOpenPreferences, on
     region: "US",
     autoDetect: true,
   });
-  const [showPreferences, setShowPreferences] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Auto-open preferences from sidebar Settings button
-  useEffect(() => {
-    if (autoOpenPreferences) {
-      setShowPreferences(true);
-      onPreferencesOpened?.();
-    }
-  }, [autoOpenPreferences, onPreferencesOpened]);
 
   // Detect region on mount
   useEffect(() => {
@@ -152,15 +141,7 @@ export default function ExploreContent({ onKeywordClick, autoOpenPreferences, on
     };
 
     fetchTrendingData();
-  }, [preferences.region]);
-
-  // Handle niche toggle
-  const toggleNiche = (nicheId: string) => {
-    const newNiches = preferences.niches.includes(nicheId)
-      ? preferences.niches.filter(n => n !== nicheId)
-      : [...preferences.niches, nicheId];
-    savePreferences({ ...preferences, niches: newNiches });
-  };
+  }, []); // No dependencies, fetches once on mount for default region
 
   // Clear search history
   const clearHistory = () => {
@@ -170,75 +151,17 @@ export default function ExploreContent({ onKeywordClick, autoOpenPreferences, on
 
   return (
     <div className="space-y-8">
-      {/* Header with Preferences Button */}
+      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-[var(--text-primary)] flex items-center gap-2">
             🔥 Explore Trending
           </h2>
           <p className="text-[var(--text-muted)] text-sm mt-1">
-            Discover what's hot in {REGION_OPTIONS.find(r => r.code === preferences.region)?.label || "your region"}
+            Discover what's hot in United States
           </p>
         </div>
-        <button
-          onClick={() => setShowPreferences(!showPreferences)}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--bg-surface)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[#FF4F00] transition-all"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          Preferences
-        </button>
       </div>
-
-      {/* Preferences Panel */}
-      {showPreferences && (
-        <div className="card p-6 space-y-6">
-          {/* Region Selection */}
-          <div>
-            <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">
-              🌍 Region
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {REGION_OPTIONS.map(region => (
-                <button
-                  key={region.code}
-                  onClick={() => savePreferences({ ...preferences, region: region.code })}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${preferences.region === region.code
-                    ? "bg-[#FF4F00] text-white"
-                    : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
-                    }`}
-                >
-                  {region.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Niche Selection */}
-          <div>
-            <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">
-              🎯 Your Niches
-            </label>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
-              {NICHE_OPTIONS.map(niche => (
-                <button
-                  key={niche.id}
-                  onClick={() => toggleNiche(niche.id)}
-                  className={`p-3 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${preferences.niches.includes(niche.id)
-                    ? "bg-[#FF4F00]/15 text-[#FF4F00] border-2 border-[#FF4F00]"
-                    : "bg-[var(--bg-surface)] text-[var(--text-secondary)] border-2 border-transparent hover:border-[var(--border)]"
-                    }`}
-                >
-                  <span>{niche.icon}</span>
-                  {niche.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Loading State */}
       {loading && (

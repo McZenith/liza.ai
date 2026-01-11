@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
+export type TabType = "explore" | "research" | "create" | "schedule" | "analytics" | "accounts" | "settings";
+
 interface SidebarProps {
   user: {
     name: string;
@@ -20,61 +22,81 @@ interface SidebarProps {
     manageAccounts: string;
     explore?: string;
     settings?: string;
+    create?: string;
   };
-  activeTab?: "explore" | "research";
-  onTabChange?: (tab: "explore" | "research") => void;
-  onOpenSettings?: () => void;
+  activeTab?: TabType;
+  onTabChange?: (tab: TabType) => void;
+  collapsed?: boolean;
+  onCollapsedChange?: (collapsed: boolean) => void;
 }
 
-const navItems = [
+const navItems: { key: string; icon: string; color: string; tab: TabType }[] = [
   {
     key: "explore",
     icon: "🔥",
     color: "#FF4F00",
-    isTab: true,
-    tab: "explore" as const,
+    tab: "explore",
   },
   {
     key: "researchContent",
     icon: "🔍",
     color: "#8B5CF6",
-    isTab: true,
-    tab: "research" as const,
+    tab: "research",
+  },
+  {
+    key: "create",
+    icon: "✨",
+    color: "#EC4899",
+    tab: "create",
   },
   {
     key: "schedulePosts",
     icon: "📅",
-    href: "/dashboard/schedule",
     color: "#22D3EE",
+    tab: "schedule",
   },
   {
     key: "viewAnalytics",
     icon: "📊",
-    href: "/dashboard/analytics",
     color: "#22C55E",
+    tab: "analytics",
   },
   {
     key: "manageAccounts",
     icon: "🔗",
-    href: "/dashboard/accounts",
     color: "#F97316",
+    tab: "accounts",
+  },
+  {
+    key: "settings",
+    icon: "⚙️",
+    color: "#6B7280",
+    tab: "settings",
   },
 ];
 
-export default function DashboardSidebar({ user, translations, activeTab, onTabChange, onOpenSettings }: SidebarProps) {
+export default function DashboardSidebar({
+  user,
+  translations,
+  activeTab,
+  onTabChange,
+  collapsed: controlledCollapsed,
+  onCollapsedChange
+}: SidebarProps) {
   const locale = useLocale();
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
+  const [internalCollapsed, setInternalCollapsed] = useState(false);
+
+  // Use controlled or internal state
+  const collapsed = controlledCollapsed ?? internalCollapsed;
+  const setCollapsed = (value: boolean) => {
+    setInternalCollapsed(value);
+    onCollapsedChange?.(value);
+  };
 
   const handleSignOut = () => {
     // TODO: Implement actual sign out
     window.location.href = `/${locale}`;
-  };
-
-  const handleNavClick = (item: typeof navItems[0]) => {
-    if (item.isTab && item.tab && onTabChange) {
-      onTabChange(item.tab);
-    }
   };
 
   return (
@@ -141,13 +163,18 @@ export default function DashboardSidebar({ user, translations, activeTab, onTabC
           {/* Navigation */}
           <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
             {navItems.map((item) => {
-              const href = item.href ? `/${locale}${item.href}` : `/${locale}/dashboard`;
-              const isActive = item.isTab
-                ? (activeTab === item.tab || (!activeTab && item.tab === "explore"))
-                : pathname === href;
+              const isActive = activeTab === item.tab || (!activeTab && item.tab === "explore");
 
-              const NavContent = (
-                <>
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => onTabChange?.(item.tab)}
+                  className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all group ${isActive
+                    ? "bg-[var(--primary)] bg-opacity-10 text-[var(--primary)]"
+                    : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
+                    }`}
+                  style={isActive ? { backgroundColor: `${item.color}15`, color: item.color } : {}}
+                >
                   <span
                     className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg transition-transform group-hover:scale-110 ${isActive ? "" : "bg-[var(--bg-surface)]"
                       }`}
@@ -160,59 +187,10 @@ export default function DashboardSidebar({ user, translations, activeTab, onTabC
                       {translations[item.key as keyof typeof translations] || item.key}
                     </span>
                   )}
-                </>
-              );
-
-              if (item.isTab) {
-                return (
-                  <button
-                    key={item.key}
-                    onClick={() => handleNavClick(item)}
-                    className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all group ${isActive
-                        ? "bg-[var(--primary)] bg-opacity-10 text-[var(--primary)]"
-                        : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
-                      }`}
-                    style={isActive ? { backgroundColor: `${item.color}15`, color: item.color } : {}}
-                  >
-                    {NavContent}
-                  </button>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.key}
-                  href={href}
-                  className={`flex items-center gap-3 px-3 py-3 rounded-xl transition-all group ${
-                    isActive
-                      ? "bg-[var(--primary)] bg-opacity-10 text-[var(--primary)]"
-                      : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
-                  }`}
-                >
-                  {NavContent}
-                </Link>
+                </button>
               );
             })}
           </nav>
-
-          {/* Settings Button */}
-          {onOpenSettings && (
-            <div className="px-3 pb-2">
-              <button
-                onClick={onOpenSettings}
-                className="w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] group"
-              >
-                <span className="w-10 h-10 rounded-lg flex items-center justify-center text-lg bg-[var(--bg-surface)] transition-transform group-hover:scale-110">
-                  ⚙️
-                </span>
-                {!collapsed && (
-                  <span className="font-medium">
-                    {translations.settings || "Settings"}
-                  </span>
-                )}
-              </button>
-            </div>
-          )}
 
           {/* User Section */}
           <div className="p-4 border-t border-[var(--border)]">

@@ -1,9 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
-import DashboardSidebar from "./DashboardSidebar";
+import { useState } from "react";
+import DashboardSidebar, { TabType } from "./DashboardSidebar";
 import ResearchContent from "./ResearchContent";
 import ExploreContent, { addToSearchHistory } from "./ExploreContent";
+import CreateContent from "./CreateContent";
+import ScheduleContent from "./ScheduleContent";
+import AnalyticsContent from "./AnalyticsContent";
+import AccountsContent from "./AccountsContent";
+import SettingsContent from "./SettingsContent";
 
 interface DashboardClientProps {
   user: {
@@ -24,16 +29,25 @@ interface DashboardClientProps {
     research?: string;
     exploreSubtitle?: string;
     settings?: string;
+    create?: string;
   };
 }
 
-type TabType = "explore" | "research";
+// Tab subtitles
+const tabSubtitles: Record<TabType, string> = {
+  explore: "Discover trending topics and opportunities in your niche",
+  research: "Analyze keywords and find content opportunities",
+  create: "Turn your keywords into optimized video content",
+  schedule: "Plan and schedule your video releases",
+  analytics: "Track your channel performance and growth",
+  accounts: "Connect and manage your social media accounts",
+  settings: "Customize your Liza.ai experience",
+};
 
 export default function DashboardClient({ user, translations }: DashboardClientProps) {
   const [activeTab, setActiveTab] = useState<TabType>("explore");
   const [initialKeyword, setInitialKeyword] = useState<string | null>(null);
-  const [showSettings, setShowSettings] = useState(false);
-  const exploreRef = useRef<{ openPreferences: () => void }>(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Handle keyword click from Explore tab - switch to Research and start analysis
   const handleKeywordClick = (keyword: string) => {
@@ -50,13 +64,6 @@ export default function DashboardClient({ user, translations }: DashboardClientP
     }
   };
 
-  // Handle settings click from sidebar
-  const handleOpenSettings = () => {
-    // Switch to Explore tab and open preferences panel
-    setActiveTab("explore");
-    setShowSettings(true);
-  };
-
   return (
     <div className="min-h-screen bg-[var(--bg-base)]">
       {/* Background Effects */}
@@ -71,7 +78,8 @@ export default function DashboardClient({ user, translations }: DashboardClientP
         user={user}
         activeTab={activeTab}
         onTabChange={handleTabChange}
-        onOpenSettings={handleOpenSettings}
+        collapsed={sidebarCollapsed}
+        onCollapsedChange={setSidebarCollapsed}
         translations={{
           signOut: translations.signOut,
           researchContent: translations.researchContent,
@@ -80,11 +88,12 @@ export default function DashboardClient({ user, translations }: DashboardClientP
           manageAccounts: translations.manageAccounts,
           explore: translations.explore,
           settings: translations.settings,
+          create: translations.create,
         }}
       />
 
-      {/* Main Content */}
-      <main className="lg:pl-64 pt-16 lg:pt-0">
+      {/* Main Content - Dynamic padding based on sidebar state */}
+      <main className={`pt-16 lg:pt-0 transition-all duration-300 ${sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-64'}`}>
         <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
           {/* Welcome Section */}
           <div className="mb-8">
@@ -92,20 +101,13 @@ export default function DashboardClient({ user, translations }: DashboardClientP
               {translations.welcome}, {user.name.split(" ")[0]}! 👋
             </h1>
             <p className="text-[var(--text-secondary)]">
-              {activeTab === "explore"
-                ? (translations.exploreSubtitle || "Discover trending topics and opportunities in your niche")
-                : translations.subtitle
-              }
+              {tabSubtitles[activeTab]}
             </p>
           </div>
 
           {/* Tab Content */}
           {activeTab === "explore" && (
-            <ExploreContent
-              onKeywordClick={handleKeywordClick}
-              autoOpenPreferences={showSettings}
-              onPreferencesOpened={() => setShowSettings(false)}
-            />
+            <ExploreContent onKeywordClick={handleKeywordClick} />
           )}
 
           {activeTab === "research" && (
@@ -114,6 +116,16 @@ export default function DashboardClient({ user, translations }: DashboardClientP
               initialKeyword={initialKeyword}
             />
           )}
+
+          {activeTab === "create" && <CreateContent />}
+
+          {activeTab === "schedule" && <ScheduleContent />}
+
+          {activeTab === "analytics" && <AnalyticsContent />}
+
+          {activeTab === "accounts" && <AccountsContent />}
+
+          {activeTab === "settings" && <SettingsContent />}
         </div>
       </main>
     </div>
