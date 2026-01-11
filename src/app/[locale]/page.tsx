@@ -52,19 +52,28 @@ function LanguageSwitcher() {
   const pathname = usePathname();
 
   const switchLocale = (newLocale: string) => {
-    // Replace current locale in pathname with new locale
     const segments = pathname.split('/');
     segments[1] = newLocale;
     router.push(segments.join('/'));
     setIsOpen(false);
   };
 
+  // Keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <div className="relative">
+    <div className="relative" onKeyDown={handleKeyDown}>
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-label="Select language"
         className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-light)] transition-colors text-sm font-medium"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -84,17 +93,21 @@ function LanguageSwitcher() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
+          role="listbox"
+          aria-label="Available languages"
           className="absolute right-0 top-full mt-2 py-2 bg-[var(--bg-elevated)] border border-[var(--border)] rounded-xl shadow-lg min-w-[160px] z-50"
         >
           {locales.map((loc) => (
             <button
               key={loc}
+              role="option"
+              aria-selected={locale === loc}
               onClick={() => switchLocale(loc)}
               className={`w-full px-4 py-2 text-left text-sm hover:bg-[var(--bg-hover)] transition-colors flex items-center justify-between ${locale === loc ? 'text-[#FF4F00] font-medium' : 'text-[var(--text-secondary)]'
                 }`}
             >
               <span>{localeNames[loc as keyof typeof localeNames]}</span>
-              {locale === loc && <span className="text-[#FF4F00]">✓</span>}
+              {locale === loc && <span aria-hidden="true" className="text-[#FF4F00]">✓</span>}
             </button>
           ))}
         </motion.div>
@@ -104,6 +117,7 @@ function LanguageSwitcher() {
       {isOpen && (
         <div
           className="fixed inset-0 z-40"
+          aria-hidden="true"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -137,6 +151,7 @@ function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${scrolled
         ? "bg-[var(--nav-bg)] backdrop-blur-xl border-[var(--nav-border)] py-3 shadow-lg"
         : "bg-transparent border-transparent py-5"
@@ -145,6 +160,7 @@ function Navigation() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <motion.a
           href="#"
+          aria-label="Liza.ai - Home"
           className="flex items-center gap-3"
           whileHover={{ scale: 1.02 }}
         >
@@ -728,10 +744,18 @@ function ScrollToTop() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--bg-base)] relative">
-      <ParallaxBackground />
-      <Navigation />
-      <Hero />
+    <>
+      {/* Skip to content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#FF4F00] focus:text-white focus:rounded-lg focus:outline-none"
+      >
+        Skip to main content
+      </a>
+      <main id="main-content" className="min-h-screen bg-[var(--bg-base)] relative">
+        <ParallaxBackground />
+        <Navigation />
+        <Hero />
       <FeaturesSection />
       <WorkflowSection />
       <TestimonialsSection />
@@ -740,5 +764,6 @@ export default function Home() {
       <Footer />
       <ScrollToTop />
     </main>
+    </>
   );
 }
