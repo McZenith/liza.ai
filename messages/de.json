@@ -199,6 +199,7 @@
     "discoverWhatsHot": "Entdecken Sie was angesagt ist in",
     "preAnalyzedOpportunities": "Voranalysierte Chancen aus heutigen Trend-Videos",
     "topTrendingContent": "YouTubes Top-Trend-Inhalte jetzt",
+    "trendingIn": "Trending in {count} Videos",
     "createTab": {
       "title": "Inhalte erstellen",
       "subtitle": "Verwandeln Sie ausgewählte Keywords in optimierte Video-Inhalte",
@@ -304,7 +305,41 @@
       "BR": "Brasilien",
       "JP": "Japan",
       "KR": "Südkorea"
+    },
+    "researchTab": {
+      "title": "Keyword-Forschungslabor",
+      "subtitle": "Keywords analysieren und Content-Chancen finden",
+      "labTitle": "Keyword-Forschungslabor",
+      "labSubtitle": "Analysieren Sie jedes Keyword um verborgene Chancen zu finden",
+      "searchPlaceholder": "Keyword zum Analysieren eingeben...",
+      "analyze": "Analysieren",
+      "analyzing": "Keyword wird analysiert...",
+      "analyzingSubtitle": "Überprüfen von Suchnachfrage, Wettbewerb & Chancen",
+      "analysisFailed": "Analyse fehlgeschlagen",
+      "keywordCart": "Keyword-Warenkorb",
+      "cartEmpty": "Ihr Warenkorb ist leer",
+      "cartEmptySubtitle": "Keywords aus der Analyse hinzufügen",
+      "exportKeywords": "Keywords exportieren",
+      "addToCart": "In den Warenkorb",
+      "inCart": "Im Warenkorb",
+      "readyToFindGold": "Bereit Gold zu finden?",
+      "readyToFindGoldDesc": "Geben Sie ein Keyword ein um versteckte Chancen zu entdecken, Wettbewerb zu analysieren und KI-Empfehlungen zu erhalten.",
+      "trySuggestion": "Versuchen",
+      "keywordAnalysis": "Keyword-Analyse",
+      "opportunity": "Chance",
+      "difficulty": "Schwierigkeit",
+      "grade": "Note",
+      "searchVolume": "Suchvolumen",
+      "trend": "Trend",
+      "competition": "Wettbewerb",
+      "contentGap": "Content-Lücke",
+      "relatedKeywords": "Verwandte Keywords",
+      "topQuestions": "Top-Fragen",
+      "mustHaveTags": "Pflicht-Tags",
+      "titlePatterns": "Titel-Muster",
+      "topVideos": "Top-Videos"
     }
   }
 }
+
 

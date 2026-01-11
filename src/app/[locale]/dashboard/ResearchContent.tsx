@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { graphqlFetch, subscribeToLongTailAnalysis, ANALYZE_KEYWORD_QUERY, GET_AUTOCOMPLETE_QUERY, LongTailUpdate } from "@/lib/graphql";
 import { useDebounce } from "@/hooks/useDebounce";
 
@@ -134,6 +135,7 @@ interface ResearchContentProps {
 }
 
 export default function ResearchContent({ initialKeyword }: ResearchContentProps) {
+    const t = useTranslations('dashboard');
     const [searchQuery, setSearchQuery] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -370,7 +372,7 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                         <div className="p-6 border-b border-[var(--border)]">
                             <div className="flex items-center justify-between">
                                 <h3 className="text-xl font-bold text-[var(--text-primary)] flex items-center gap-2">
-                                    🛒 Keyword Cart
+                                    🛒 {t('researchTab.keywordCart')}
                                     <span className="text-sm font-normal text-[var(--text-muted)]">({cart.length})</span>
                                 </h3>
                                 <button onClick={() => setShowCart(false)} className="p-2 hover:bg-[var(--bg-hover)] rounded-lg">
@@ -384,8 +386,8 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                             {cart.length === 0 ? (
                                 <div className="text-center py-12">
                                     <span className="text-5xl">🛒</span>
-                                    <p className="mt-4 text-[var(--text-muted)]">Your cart is empty</p>
-                                    <p className="text-sm text-[var(--text-muted)]">Add keywords from the analysis</p>
+                                    <p className="mt-4 text-[var(--text-muted)]">{t('researchTab.cartEmpty')}</p>
+                                    <p className="text-sm text-[var(--text-muted)]">{t('researchTab.cartEmptySubtitle')}</p>
                                 </div>
                             ) : (
                                 <div className="space-y-3">
@@ -416,7 +418,7 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                         {cart.length > 0 && (
                             <div className="p-6 border-t border-[var(--border)]">
                                 <button className="w-full py-3 rounded-xl bg-gradient-to-r from-[#FF4F00] to-[#FF7A33] text-white font-medium hover:shadow-lg hover:shadow-orange-500/25 transition-all">
-                                    Export {cart.length} Keywords
+                                    {t('researchTab.exportKeywords')} ({cart.length})
                                 </button>
                             </div>
                         )}
@@ -428,8 +430,8 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
             <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#FF4F00]/10 via-purple-500/10 to-cyan-500/10 rounded-3xl blur-xl" />
                 <div className="relative bg-[var(--bg-surface)]/80 backdrop-blur-xl border border-[var(--border)] rounded-3xl p-6 md:p-8">
-                    <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2">🔬 Keyword Research Lab</h2>
-                    <p className="text-[var(--text-muted)] mb-6">Analyze any keyword to find hidden opportunities</p>
+                    <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2">🔬 {t('researchTab.labTitle')}</h2>
+                    <p className="text-[var(--text-muted)] mb-6">{t('researchTab.labSubtitle')}</p>
 
                     <div className="relative">
                         <input
@@ -442,7 +444,7 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                             onKeyDown={handleKeyDown}
                             onFocus={() => setShowSuggestions(true)}
                             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                            placeholder="Enter a keyword to analyze..."
+                            placeholder={t('researchTab.searchPlaceholder')}
                             className="w-full px-6 py-4 pl-14 rounded-2xl bg-[var(--bg-base)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[#FF4F00] focus:ring-2 focus:ring-[#FF4F00]/20 transition-all text-lg"
                         />
                         <svg
@@ -461,10 +463,10 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                             {analyzing ? (
                                 <div className="flex items-center gap-2">
                                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                    <span>Analyzing</span>
+                                    <span>{t('researchTab.analyze')}...</span>
                                 </div>
                             ) : (
-                                "Analyze"
+                                    t('researchTab.analyze')
                             )}
                         </button>
 
@@ -577,13 +579,13 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                                             }`}
                                     >
                                         {isInCart(result.keyword) ? (
-                                            <>✓ In Cart</>
+                                            <>✓ {t('researchTab.inCart')}</>
                                         ) : (
                                             <>
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                                                 </svg>
-                                                Add to Cart
+                                                    {t('researchTab.addToCart')}
                                             </>
                                         )}
                                     </button>
@@ -923,9 +925,9 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                     <div className="w-32 h-32 mx-auto mb-8 rounded-3xl bg-gradient-to-br from-[#FF4F00]/20 to-purple-500/20 flex items-center justify-center text-6xl">
                         🔬
                     </div>
-                    <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3">Ready to Find Gold?</h3>
+                    <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3">{t('researchTab.readyToFindGold')}</h3>
                     <p className="text-[var(--text-secondary)] max-w-md mx-auto mb-6">
-                        Enter any keyword to discover hidden opportunities, analyze competition, and get AI-powered recommendations.
+                        {t('researchTab.readyToFindGoldDesc')}
                     </p>
                     <div className="flex flex-wrap justify-center gap-3">
                         {["youtube seo", "tiktok growth", "ai tools", "content creation"].map((kw) => (
@@ -934,7 +936,7 @@ export default function ResearchContent({ initialKeyword }: ResearchContentProps
                                 onClick={() => handleSearch(kw)}
                                 className="px-4 py-2 rounded-xl bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border)] hover:border-[#FF4F00] hover:text-[#FF4F00] transition-all"
                             >
-                                Try "{kw}"
+                                {t('researchTab.trySuggestion')} "{kw}"
                             </button>
                         ))}
                     </div>

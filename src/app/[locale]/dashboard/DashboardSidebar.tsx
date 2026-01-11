@@ -1,10 +1,11 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import LanguageThemeSwitcher from "@/components/LanguageThemeSwitcher";
 
 export type TabType = "explore" | "research" | "create" | "schedule" | "analytics" | "accounts" | "settings";
 
@@ -30,45 +31,52 @@ interface SidebarProps {
   onCollapsedChange?: (collapsed: boolean) => void;
 }
 
-const navItems: { key: string; icon: string; color: string; tab: TabType }[] = [
+const navItems: { key: string; translationKey: string; icon: string; color: string; tab: TabType }[] = [
   {
     key: "explore",
+    translationKey: "explore",
     icon: "🔥",
     color: "#FF4F00",
     tab: "explore",
   },
   {
     key: "researchContent",
+    translationKey: "researchContent",
     icon: "🔍",
     color: "#8B5CF6",
     tab: "research",
   },
   {
     key: "create",
+    translationKey: "create",
     icon: "✨",
     color: "#EC4899",
     tab: "create",
   },
   {
     key: "schedulePosts",
+    translationKey: "schedulePosts",
     icon: "📅",
     color: "#22D3EE",
     tab: "schedule",
   },
   {
     key: "viewAnalytics",
+    translationKey: "viewAnalytics",
     icon: "📊",
     color: "#22C55E",
     tab: "analytics",
   },
   {
     key: "manageAccounts",
+    translationKey: "manageAccounts",
     icon: "🔗",
     color: "#F97316",
     tab: "accounts",
   },
   {
     key: "settings",
+    translationKey: "settings",
     icon: "⚙️",
     color: "#6B7280",
     tab: "settings",
@@ -84,6 +92,7 @@ export default function DashboardSidebar({
   onCollapsedChange
 }: SidebarProps) {
   const locale = useLocale();
+  const t = useTranslations('dashboard');
   const pathname = usePathname();
   const [internalCollapsed, setInternalCollapsed] = useState(false);
 
@@ -111,16 +120,19 @@ export default function DashboardSidebar({
             Liza<span className="text-[#FF4F00]">.ai</span>
           </span>
         </Link>
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="w-10 h-10 rounded-lg flex items-center justify-center bg-[var(--bg-surface)] border border-[var(--border)]"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-2">
+          <LanguageThemeSwitcher />
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="w-10 h-10 rounded-lg flex items-center justify-center bg-[var(--bg-surface)] border border-[var(--border)]"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
       </header>
 
       {/* Sidebar */}
@@ -184,7 +196,7 @@ export default function DashboardSidebar({
                   </span>
                   {!collapsed && (
                     <span className="font-medium">
-                      {translations[item.key as keyof typeof translations] || item.key}
+                      {t(item.translationKey)}
                     </span>
                   )}
                 </button>

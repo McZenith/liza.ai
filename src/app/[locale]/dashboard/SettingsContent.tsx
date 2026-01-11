@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 // User preferences interface
 interface UserPreferences {
@@ -9,35 +10,25 @@ interface UserPreferences {
   autoDetect: boolean;
 }
 
-// Available niches
-const NICHE_OPTIONS = [
-  { id: "tech", label: "Technology", icon: "💻" },
-  { id: "gaming", label: "Gaming", icon: "🎮" },
-  { id: "lifestyle", label: "Lifestyle", icon: "✨" },
-  { id: "finance", label: "Finance", icon: "💰" },
-  { id: "education", label: "Education", icon: "📚" },
-  { id: "entertainment", label: "Entertainment", icon: "🎬" },
-  { id: "music", label: "Music", icon: "🎵" },
-  { id: "travel", label: "Travel", icon: "✈️" },
-  { id: "food", label: "Food & Cooking", icon: "🍳" },
-  { id: "health", label: "Health & Fitness", icon: "💪" },
-  { id: "sports", label: "Sports", icon: "⚽" },
-  { id: "business", label: "Business", icon: "📈" },
-];
+// Available niches (IDs only, labels come from translations)
+const NICHE_IDS = ["tech", "gaming", "lifestyle", "finance", "education", "entertainment", "music", "travel", "food", "health", "sports", "business"];
 
-// Available regions  
-const REGION_OPTIONS = [
-  { code: "US", label: "United States", flag: "🇺🇸" },
-  { code: "GB", label: "United Kingdom", flag: "🇬🇧" },
-  { code: "DE", label: "Germany", flag: "🇩🇪" },
-  { code: "FR", label: "France", flag: "🇫🇷" },
-  { code: "IN", label: "India", flag: "🇮🇳" },
-  { code: "BR", label: "Brazil", flag: "🇧🇷" },
-  { code: "JP", label: "Japan", flag: "🇯🇵" },
-  { code: "KR", label: "South Korea", flag: "🇰🇷" },
-];
+// Niche icons
+const NICHE_ICONS: Record<string, string> = {
+    tech: "💻", gaming: "🎮", lifestyle: "✨", finance: "💰",
+    education: "📚", entertainment: "🎬", music: "🎵", travel: "✈️",
+    food: "🍳", health: "💪", sports: "⚽", business: "📈",
+};
+
+// Region flags
+const REGION_FLAGS: Record<string, string> = {
+    US: "🇺🇸", GB: "🇬🇧", DE: "🇩🇪", FR: "🇫🇷", IN: "🇮🇳", BR: "🇧🇷", JP: "🇯🇵", KR: "🇰🇷",
+};
+
+const REGION_CODES = ["US", "GB", "DE", "FR", "IN", "BR", "JP", "KR"];
 
 export default function SettingsContent() {
+    const t = useTranslations('dashboard');
   const [preferences, setPreferences] = useState<UserPreferences>({
     niches: [],
     region: "US",
@@ -86,15 +77,15 @@ export default function SettingsContent() {
         <div className="flex items-center gap-3">
           <span className="text-3xl">⚙️</span>
           <div>
-            <h2 className="text-2xl font-bold text-[var(--text-primary)]">Settings</h2>
+                      <h2 className="text-2xl font-bold text-[var(--text-primary)]">{t('settingsTab.title')}</h2>
             <p className="text-[var(--text-muted)] text-sm">
-              Customize your Liza.ai experience
+                          {t('settingsTab.subtitle')}
             </p>
           </div>
         </div>
         {saved && (
           <span className="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 text-sm font-medium">
-            ✓ Saved
+                      ✓ {t('settingsTab.saved')}
           </span>
         )}
       </div>
@@ -104,26 +95,26 @@ export default function SettingsContent() {
         <div className="flex items-center gap-3 mb-4">
           <span className="text-xl">🌍</span>
           <div>
-            <h3 className="text-lg font-semibold text-[var(--text-primary)]">Region</h3>
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)]">{t('settingsTab.region')}</h3>
             <p className="text-sm text-[var(--text-muted)]">
-              Select your region for trending content and search data
+                          {t('settingsTab.regionDesc')}
             </p>
           </div>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {REGION_OPTIONS.map(region => (
+                  {REGION_CODES.map(code => (
             <button
-              key={region.code}
-              onClick={() => savePreferences({ ...preferences, region: region.code })}
+                  key={code}
+                  onClick={() => savePreferences({ ...preferences, region: code })}
               className={`p-4 rounded-xl text-left transition-all ${
-                preferences.region === region.code
+                  preferences.region === code
                   ? "bg-[#FF4F00]/15 border-2 border-[#FF4F00] text-[var(--text-primary)]"
                   : "bg-[var(--bg-surface)] border-2 border-transparent hover:border-[var(--border)] text-[var(--text-secondary)]"
               }`}
             >
-              <span className="text-2xl mb-2 block">{region.flag}</span>
-              <span className="font-medium text-sm">{region.label}</span>
+                  <span className="text-2xl mb-2 block">{REGION_FLAGS[code]}</span>
+                  <span className="font-medium text-sm">{t(`regions.${code}`)}</span>
             </button>
           ))}
         </div>
@@ -134,33 +125,33 @@ export default function SettingsContent() {
         <div className="flex items-center gap-3 mb-4">
           <span className="text-xl">🎯</span>
           <div>
-            <h3 className="text-lg font-semibold text-[var(--text-primary)]">Your Niches</h3>
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)]">{t('settingsTab.yourNiches')}</h3>
             <p className="text-sm text-[var(--text-muted)]">
-              Select your content niches to personalize recommendations
+                          {t('settingsTab.nichesDesc')}
             </p>
           </div>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {NICHE_OPTIONS.map(niche => (
+                  {NICHE_IDS.map(nicheId => (
             <button
-              key={niche.id}
-              onClick={() => toggleNiche(niche.id)}
+                  key={nicheId}
+                  onClick={() => toggleNiche(nicheId)}
               className={`p-4 rounded-xl transition-all flex items-center gap-3 ${
-                preferences.niches.includes(niche.id)
+                  preferences.niches.includes(nicheId)
                   ? "bg-[#FF4F00]/15 border-2 border-[#FF4F00] text-[var(--text-primary)]"
                   : "bg-[var(--bg-surface)] border-2 border-transparent hover:border-[var(--border)] text-[var(--text-secondary)]"
               }`}
             >
-              <span className="text-xl">{niche.icon}</span>
-              <span className="font-medium text-sm">{niche.label}</span>
+                  <span className="text-xl">{NICHE_ICONS[nicheId]}</span>
+                  <span className="font-medium text-sm">{t(`niches.${nicheId}`)}</span>
             </button>
           ))}
         </div>
 
         {preferences.niches.length > 0 && (
           <p className="mt-4 text-sm text-[var(--text-muted)]">
-            {preferences.niches.length} niche{preferences.niches.length > 1 ? "s" : ""} selected
+                      {preferences.niches.length} {t('settingsTab.nichesSelected')}
           </p>
         )}
       </div>
@@ -170,9 +161,9 @@ export default function SettingsContent() {
         <div className="flex items-center gap-3 mb-4">
           <span className="text-xl">🔒</span>
           <div>
-            <h3 className="text-lg font-semibold text-[var(--text-primary)]">Data & Privacy</h3>
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)]">{t('settingsTab.dataPrivacy')}</h3>
             <p className="text-sm text-[var(--text-muted)]">
-              Manage your data and privacy settings
+                          {t('settingsTab.dataPrivacyDesc')}
             </p>
           </div>
         </div>
@@ -188,7 +179,7 @@ export default function SettingsContent() {
           >
             <div className="flex items-center gap-3">
               <span className="text-lg">🗑</span>
-              <span className="font-medium text-[var(--text-primary)]">Clear Search History</span>
+                          <span className="font-medium text-[var(--text-primary)]">{t('settingsTab.clearSearchHistory')}</span>
             </div>
             <span className="text-[var(--text-muted)]">→</span>
           </button>
@@ -204,7 +195,7 @@ export default function SettingsContent() {
           >
             <div className="flex items-center gap-3">
               <span className="text-lg">🔄</span>
-              <span className="font-medium text-[var(--text-primary)]">Reset Preferences</span>
+                          <span className="font-medium text-[var(--text-primary)]">{t('settingsTab.resetPreferences')}</span>
             </div>
             <span className="text-[var(--text-muted)]">→</span>
           </button>

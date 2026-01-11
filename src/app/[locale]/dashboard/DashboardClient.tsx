@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import DashboardSidebar, { TabType } from "./DashboardSidebar";
 import ResearchContent from "./ResearchContent";
 import ExploreContent, { addToSearchHistory } from "./ExploreContent";
@@ -9,6 +10,7 @@ import ScheduleContent from "./ScheduleContent";
 import AnalyticsContent from "./AnalyticsContent";
 import AccountsContent from "./AccountsContent";
 import SettingsContent from "./SettingsContent";
+import LanguageThemeSwitcher from "@/components/LanguageThemeSwitcher";
 
 interface DashboardClientProps {
   user: {
@@ -33,21 +35,25 @@ interface DashboardClientProps {
   };
 }
 
-// Tab subtitles
-const tabSubtitles: Record<TabType, string> = {
-  explore: "Discover trending topics and opportunities in your niche",
-  research: "Analyze keywords and find content opportunities",
-  create: "Turn your keywords into optimized video content",
-  schedule: "Plan and schedule your video releases",
-  analytics: "Track your channel performance and growth",
-  accounts: "Connect and manage your social media accounts",
-  settings: "Customize your Liza.ai experience",
-};
-
 export default function DashboardClient({ user, translations }: DashboardClientProps) {
+  const t = useTranslations('dashboard');
   const [activeTab, setActiveTab] = useState<TabType>("explore");
   const [initialKeyword, setInitialKeyword] = useState<string | null>(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  // Tab subtitles using translations
+  const getTabSubtitle = (tab: TabType): string => {
+    const subtitles: Record<TabType, string> = {
+      explore: t('exploreSubtitle'),
+      research: t('researchTab.subtitle'),
+      create: t('createTab.subtitle'),
+      schedule: t('scheduleTab.subtitle'),
+      analytics: t('analyticsTab.subtitle'),
+      accounts: t('accountsTab.subtitle'),
+      settings: t('settingsTab.subtitle'),
+    };
+    return subtitles[tab];
+  };
 
   // Handle keyword click from Explore tab - switch to Research and start analysis
   const handleKeywordClick = (keyword: string) => {
@@ -95,14 +101,19 @@ export default function DashboardClient({ user, translations }: DashboardClientP
       {/* Main Content - Dynamic padding based on sidebar state */}
       <main className={`pt-16 lg:pt-0 transition-all duration-300 ${sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-64'}`}>
         <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
-          {/* Welcome Section */}
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-2">
-              {translations.welcome}, {user.name.split(" ")[0]}! 👋
-            </h1>
-            <p className="text-[var(--text-secondary)]">
-              {tabSubtitles[activeTab]}
-            </p>
+          {/* Welcome Section with Language/Theme Switcher */}
+          <div className="mb-8 flex items-start justify-between">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-2">
+                {translations.welcome}, {user.name.split(" ")[0]}! 👋
+              </h1>
+              <p className="text-[var(--text-secondary)]">
+                {getTabSubtitle(activeTab)}
+              </p>
+            </div>
+            <div className="hidden lg:block">
+              <LanguageThemeSwitcher />
+            </div>
           </div>
 
           {/* Tab Content */}

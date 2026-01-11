@@ -199,6 +199,7 @@
     "discoverWhatsHot": "今ホットなトピックを発見",
     "preAnalyzedOpportunities": "今日のトレンド動画から事前分析された機会",
     "topTrendingContent": "YouTubeのトップトレンドコンテンツ",
+    "trendingIn": "{count}本の動画でトレンド中",
     "createTab": {
       "title": "コンテンツを作成",
       "subtitle": "選択したキーワードを最適化された動画コンテンツに変換",
@@ -304,7 +305,41 @@
       "BR": "ブラジル",
       "JP": "日本",
       "KR": "韓国"
+    },
+    "researchTab": {
+      "title": "キーワードリサーチラボ",
+      "subtitle": "キーワードを分析してコンテンツの機会を発見",
+      "labTitle": "キーワードリサーチラボ",
+      "labSubtitle": "キーワードを分析して隠れた機会を発見",
+      "searchPlaceholder": "分析するキーワードを入力...",
+      "analyze": "分析",
+      "analyzing": "キーワードを分析中...",
+      "analyzingSubtitle": "検索需要、競合、機会をチェック中",
+      "analysisFailed": "分析に失敗しました",
+      "keywordCart": "キーワードカート",
+      "cartEmpty": "カートは空です",
+      "cartEmptySubtitle": "分析からキーワードを追加",
+      "exportKeywords": "キーワードをエクスポート",
+      "addToCart": "カートに追加",
+      "inCart": "カートに追加済み",
+      "readyToFindGold": "ゴールドを見つける準備は？",
+      "readyToFindGoldDesc": "キーワードを入力して隠れた機会を発見し、競合を分析し、AI搭載のおすすめを取得。",
+      "trySuggestion": "試す",
+      "keywordAnalysis": "キーワード分析",
+      "opportunity": "チャンス",
+      "difficulty": "難易度",
+      "grade": "グレード",
+      "searchVolume": "検索ボリューム",
+      "trend": "トレンド",
+      "competition": "競合",
+      "contentGap": "コンテンツギャップ",
+      "relatedKeywords": "関連キーワード",
+      "topQuestions": "よくある質問",
+      "mustHaveTags": "必須タグ",
+      "titlePatterns": "タイトルパターン",
+      "topVideos": "トップ動画"
     }
   }
 }
+
 

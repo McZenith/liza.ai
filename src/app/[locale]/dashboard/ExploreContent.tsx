@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { graphqlFetch, GET_TRENDING_KEYWORDS_QUERY, GET_TRENDING_VIDEOS_QUERY, TrendingKeyword, TrendingVideo } from "@/lib/graphql";
 
 // User preferences interface
@@ -66,6 +67,7 @@ interface ExploreContentProps {
 }
 
 export default function ExploreContent({ onKeywordClick }: ExploreContentProps) {
+  const t = useTranslations('dashboard');
   const [trendingKeywords, setTrendingKeywords] = useState<TrendingKeyword[]>([]);
   const [trendingVideos, setTrendingVideos] = useState<TrendingVideo[]>([]);
   const [searchHistory, setSearchHistory] = useState<SearchHistoryItem[]>([]);
@@ -155,10 +157,10 @@ export default function ExploreContent({ onKeywordClick }: ExploreContentProps) 
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-[var(--text-primary)] flex items-center gap-2">
-            🔥 Explore Trending
+            🔥 {t('explore')}
           </h2>
           <p className="text-[var(--text-muted)] text-sm mt-1">
-            Discover what's hot in United States
+            {t('discoverWhatsHot')} {t(`regions.${preferences.region}`)}
           </p>
         </div>
       </div>
@@ -170,7 +172,7 @@ export default function ExploreContent({ onKeywordClick }: ExploreContentProps) 
             <div className="w-16 h-16 border-4 border-[var(--border)] rounded-full" />
             <div className="absolute inset-0 w-16 h-16 border-4 border-[#FF4F00] border-t-transparent rounded-full animate-spin" />
           </div>
-          <p className="mt-4 text-[var(--text-muted)]">Loading trending content...</p>
+          <p className="mt-4 text-[var(--text-muted)]">{t('createTab.comingSoon')}...</p>
         </div>
       )}
 
@@ -192,15 +194,15 @@ export default function ExploreContent({ onKeywordClick }: ExploreContentProps) 
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl">💎</span>
               <div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">Trending Keywords</h3>
-                <p className="text-sm text-[var(--text-muted)]">Pre-analyzed opportunities from today's trending videos</p>
+                <h3 className="text-lg font-semibold text-[var(--text-primary)]">{t('trendingKeywords')}</h3>
+                <p className="text-sm text-[var(--text-muted)]">{t('preAnalyzedOpportunities')}</p>
               </div>
             </div>
 
             {trendingKeywords.length === 0 ? (
               <div className="text-center py-8 text-[var(--text-muted)]">
-                <p>No trending keywords available yet.</p>
-                <p className="text-sm mt-1">Data updates daily at 6 AM UTC.</p>
+                <p>{t('noTrendingKeywords')}</p>
+                <p className="text-sm mt-1">{t('dataUpdatesDaily')}</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -225,7 +227,7 @@ export default function ExploreContent({ onKeywordClick }: ExploreContentProps) 
                     </div>
                     {kw.trendingVideoCount > 0 && (
                       <p className="mt-2 text-xs text-[var(--text-muted)]">
-                        📹 Trending in {kw.trendingVideoCount} videos
+                        📹 {t('trendingIn', { count: kw.trendingVideoCount })}
                       </p>
                     )}
                   </button>
@@ -241,15 +243,15 @@ export default function ExploreContent({ onKeywordClick }: ExploreContentProps) 
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">🕒</span>
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--text-primary)]">Recent Searches</h3>
-                    <p className="text-sm text-[var(--text-muted)]">Your search history</p>
+                    <h3 className="text-lg font-semibold text-[var(--text-primary)]">{t('recentSearches')}</h3>
+                    <p className="text-sm text-[var(--text-muted)]">{t('noRecentSearches').split('.')[0]}</p>
                   </div>
                 </div>
                 <button
                   onClick={clearHistory}
                   className="text-sm text-[var(--text-muted)] hover:text-red-400 transition-colors"
                 >
-                  Clear all
+                  {t('clearHistory')}
                 </button>
               </div>
 
@@ -267,13 +269,12 @@ export default function ExploreContent({ onKeywordClick }: ExploreContentProps) 
             </div>
           )}
 
-          {/* Trending Videos Section */}
           <div className="card p-6">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl">🎬</span>
               <div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">Trending Videos</h3>
-                <p className="text-sm text-[var(--text-muted)]">YouTube's top trending content right now</p>
+                <h3 className="text-lg font-semibold text-[var(--text-primary)]">{t('trendingVideos')}</h3>
+                <p className="text-sm text-[var(--text-muted)]">{t('topTrendingContent')}</p>
               </div>
             </div>
 

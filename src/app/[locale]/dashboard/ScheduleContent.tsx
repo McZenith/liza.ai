@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 // Placeholder component for the Schedule tab
 export default function ScheduleContent() {
+  const t = useTranslations('dashboard');
   const [selectedDate] = useState(new Date());
 
   // Generate calendar days for current month
@@ -35,14 +37,14 @@ export default function ScheduleContent() {
         <div className="flex items-center gap-3">
           <span className="text-3xl">📅</span>
           <div>
-            <h2 className="text-2xl font-bold text-[var(--text-primary)]">Schedule Posts</h2>
+            <h2 className="text-2xl font-bold text-[var(--text-primary)]">{t('scheduleTab.title')}</h2>
             <p className="text-[var(--text-muted)] text-sm">
-              Plan and schedule your video releases
+              {t('scheduleTab.subtitle')}
             </p>
           </div>
         </div>
         <button className="px-4 py-2 rounded-xl bg-[#FF4F00] text-white font-medium hover:bg-[#FF4F00]/90 transition-colors opacity-50 cursor-not-allowed">
-          + Schedule New
+          {t('scheduleTab.scheduleNew')}
         </button>
       </div>
 
@@ -77,7 +79,7 @@ export default function ScheduleContent() {
                   aspect-square flex items-center justify-center rounded-lg text-sm
                   ${day ? "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] cursor-pointer" : ""}
                   ${day === new Date().getDate() && selectedDate.getMonth() === new Date().getMonth()
-                    ? "bg-[#FF4F00]/10 text-[#FF4F00] font-semibold"
+                    ? "bg-[#FF4F00]/10 text-[#FF4F00] font-semibold" 
                     : ""}
                 `}
               >
@@ -89,13 +91,13 @@ export default function ScheduleContent() {
 
         {/* Upcoming Posts */}
         <div className="card p-6">
-          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Upcoming Posts</h3>
+          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">{t('scheduleTab.upcomingPosts')}</h3>
 
           <div className="text-center py-12">
             <div className="text-5xl mb-4">📭</div>
-            <p className="text-[var(--text-secondary)] font-medium">No scheduled posts</p>
+            <p className="text-[var(--text-secondary)] font-medium">{t('scheduleTab.noScheduledPosts')}</p>
             <p className="text-[var(--text-muted)] text-sm mt-2">
-              Connect your YouTube account to start scheduling
+              {t('scheduleTab.connectToSchedule')}
             </p>
           </div>
         </div>
@@ -108,13 +110,13 @@ export default function ScheduleContent() {
             ▶
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-[var(--text-primary)]">Connect Your YouTube Channel</h3>
+            <h3 className="font-semibold text-[var(--text-primary)]">{t('scheduleTab.connectChannel')}</h3>
             <p className="text-sm text-[var(--text-muted)]">
-              Link your account to schedule and publish videos directly
+              {t('scheduleTab.connectChannelDesc')}
             </p>
           </div>
           <button className="px-6 py-3 rounded-xl bg-[#FF0000] text-white font-medium hover:bg-[#FF0000]/90 transition-colors opacity-50 cursor-not-allowed">
-            Connect YouTube
+            {t('scheduleTab.connectYouTube')}
           </button>
         </div>
       </div>

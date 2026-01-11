@@ -199,6 +199,7 @@
     "discoverWhatsHot": "Descubre qué está de moda en",
     "preAnalyzedOpportunities": "Oportunidades pre-analizadas de los videos de hoy",
     "topTrendingContent": "Contenido top en tendencia de YouTube",
+    "trendingIn": "En tendencia en {count} videos",
     "createTab": {
       "title": "Crear Contenido",
       "subtitle": "Convierte tus keywords seleccionados en contenido de video optimizado",
@@ -304,7 +305,41 @@
       "BR": "Brasil",
       "JP": "Japón",
       "KR": "Corea del Sur"
+    },
+    "researchTab": {
+      "title": "Laboratorio de Keywords",
+      "subtitle": "Analiza keywords y encuentra oportunidades de contenido",
+      "labTitle": "Laboratorio de Keywords",
+      "labSubtitle": "Analiza cualquier keyword para encontrar oportunidades ocultas",
+      "searchPlaceholder": "Ingresa un keyword para analizar...",
+      "analyze": "Analizar",
+      "analyzing": "Analizando keyword...",
+      "analyzingSubtitle": "Verificando demanda de búsqueda, competencia y oportunidades",
+      "analysisFailed": "Análisis fallido",
+      "keywordCart": "Carrito de Keywords",
+      "cartEmpty": "Tu carrito está vacío",
+      "cartEmptySubtitle": "Añade keywords del análisis",
+      "exportKeywords": "Exportar Keywords",
+      "addToCart": "Añadir al Carrito",
+      "inCart": "En el Carrito",
+      "readyToFindGold": "¿Listo para Encontrar Oro?",
+      "readyToFindGoldDesc": "Ingresa cualquier keyword para descubrir oportunidades ocultas, analizar competencia y obtener recomendaciones con IA.",
+      "trySuggestion": "Probar",
+      "keywordAnalysis": "Análisis de Keyword",
+      "opportunity": "Oportunidad",
+      "difficulty": "Dificultad",
+      "grade": "Calificación",
+      "searchVolume": "Volumen de Búsqueda",
+      "trend": "Tendencia",
+      "competition": "Competencia",
+      "contentGap": "Brecha de Contenido",
+      "relatedKeywords": "Keywords Relacionados",
+      "topQuestions": "Preguntas Principales",
+      "mustHaveTags": "Tags Imprescindibles",
+      "titlePatterns": "Patrones de Títulos",
+      "topVideos": "Videos Top"
     }
   }
 }
+
 

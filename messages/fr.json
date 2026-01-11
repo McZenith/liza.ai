@@ -199,6 +199,7 @@
     "discoverWhatsHot": "Découvrez ce qui est tendance en",
     "preAnalyzedOpportunities": "Opportunités pré-analysées des vidéos tendance du jour",
     "topTrendingContent": "Contenu tendance de YouTube en ce moment",
+    "trendingIn": "Tendance dans {count} vidéos",
     "createTab": {
       "title": "Créer du Contenu",
       "subtitle": "Transformez vos mots-clés sélectionnés en contenu vidéo optimisé",
@@ -304,7 +305,41 @@
       "BR": "Brésil",
       "JP": "Japon",
       "KR": "Corée du Sud"
+    },
+    "researchTab": {
+      "title": "Laboratoire de Recherche",
+      "subtitle": "Analysez les mots-clés et trouvez des opportunités de contenu",
+      "labTitle": "Laboratoire de Recherche de Mots-clés",
+      "labSubtitle": "Analysez n'importe quel mot-clé pour trouver des opportunités cachées",
+      "searchPlaceholder": "Entrez un mot-clé à analyser...",
+      "analyze": "Analyser",
+      "analyzing": "Analyse du mot-clé...",
+      "analyzingSubtitle": "Vérification de la demande, concurrence et opportunités",
+      "analysisFailed": "Échec de l'analyse",
+      "keywordCart": "Panier de Mots-clés",
+      "cartEmpty": "Votre panier est vide",
+      "cartEmptySubtitle": "Ajoutez des mots-clés depuis l'analyse",
+      "exportKeywords": "Exporter les Mots-clés",
+      "addToCart": "Ajouter au Panier",
+      "inCart": "Dans le Panier",
+      "readyToFindGold": "Prêt à Trouver de l'Or ?",
+      "readyToFindGoldDesc": "Entrez un mot-clé pour découvrir des opportunités cachées, analyser la concurrence et obtenir des recommandations IA.",
+      "trySuggestion": "Essayer",
+      "keywordAnalysis": "Analyse de Mot-clé",
+      "opportunity": "Opportunité",
+      "difficulty": "Difficulté",
+      "grade": "Note",
+      "searchVolume": "Volume de Recherche",
+      "trend": "Tendance",
+      "competition": "Concurrence",
+      "contentGap": "Écart de Contenu",
+      "relatedKeywords": "Mots-clés Associés",
+      "topQuestions": "Questions Principales",
+      "mustHaveTags": "Tags Essentiels",
+      "titlePatterns": "Modèles de Titres",
+      "topVideos": "Vidéos Top"
     }
   }
 }
+
 

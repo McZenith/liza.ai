@@ -199,6 +199,7 @@
     "discoverWhatsHot": "Descubra o que está em alta em",
     "preAnalyzedOpportunities": "Oportunidades pré-analisadas dos vídeos em alta de hoje",
     "topTrendingContent": "Conteúdo top em alta do YouTube agora",
+    "trendingIn": "Em tendência em {count} vídeos",
     "createTab": {
       "title": "Criar Conteúdo",
       "subtitle": "Transforme suas keywords selecionadas em conteúdo de vídeo otimizado",
@@ -304,7 +305,41 @@
       "BR": "Brasil",
       "JP": "Japão",
       "KR": "Coreia do Sul"
+    },
+    "researchTab": {
+      "title": "Laboratório de Pesquisa",
+      "subtitle": "Analise palavras-chave e encontre oportunidades de conteúdo",
+      "labTitle": "Laboratório de Pesquisa de Keywords",
+      "labSubtitle": "Analise qualquer keyword para encontrar oportunidades ocultas",
+      "searchPlaceholder": "Digite uma keyword para analisar...",
+      "analyze": "Analisar",
+      "analyzing": "Analisando keyword...",
+      "analyzingSubtitle": "Verificando demanda de busca, competição e oportunidades",
+      "analysisFailed": "Análise falhou",
+      "keywordCart": "Carrinho de Keywords",
+      "cartEmpty": "Seu carrinho está vazio",
+      "cartEmptySubtitle": "Adicione keywords da análise",
+      "exportKeywords": "Exportar Keywords",
+      "addToCart": "Adicionar ao Carrinho",
+      "inCart": "No Carrinho",
+      "readyToFindGold": "Pronto para Encontrar Ouro?",
+      "readyToFindGoldDesc": "Digite qualquer keyword para descobrir oportunidades ocultas, analisar competição e obter recomendações com IA.",
+      "trySuggestion": "Tentar",
+      "keywordAnalysis": "Análise de Keyword",
+      "opportunity": "Oportunidade",
+      "difficulty": "Dificuldade",
+      "grade": "Nota",
+      "searchVolume": "Volume de Busca",
+      "trend": "Tendência",
+      "competition": "Competição",
+      "contentGap": "Lacuna de Conteúdo",
+      "relatedKeywords": "Keywords Relacionadas",
+      "topQuestions": "Principais Perguntas",
+      "mustHaveTags": "Tags Obrigatórias",
+      "titlePatterns": "Padrões de Títulos",
+      "topVideos": "Vídeos Top"
     }
   }
 }
+
 
