@@ -100,6 +100,9 @@ body {
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
+  /* Optimize DOM rendering for below-the-fold sections */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 100vh;
 }
   
   /* ===== BUTTONS ===== */
@@ -363,6 +366,30 @@ textarea:focus-visible {
   outline: none;
 }
 
+/* ===== GPU ACCELERATION FOR ANIMATIONS ===== */
+.animate-float,
+.animate-pulse-glow,
+.animate-gradient,
+[class*="motion"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Force GPU compositing for parallax elements */
+.blur-\[180px\],
+.blur-\[200px\],
+.blur-\[150px\] {
+  transform: translate3d(0, 0, 0);
+  contain: strict;
+}
+
+/* Optimize card hover animations for GPU */
+.feature-card,
+.platform-icon {
+  transform: translateZ(0);
+  will-change: transform;
+}
 /* ===== REDUCED MOTION SUPPORT ===== */
 @media (prefers-reduced-motion: reduce) {
 

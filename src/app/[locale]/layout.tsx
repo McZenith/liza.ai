@@ -10,6 +10,8 @@ import "../globals.css";
 const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+    display: "swap",
+    preload: true,
 });
 
 type Props = {
