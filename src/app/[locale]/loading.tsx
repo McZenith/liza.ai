@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Loading() {
   return (
-    <div className="fixed inset-0 bg-[var(--bg-base)] flex items-center justify-center z-[100]">
+      <div className="fixed inset-0 flex items-center justify-center z-[100]" style={{ backgroundColor: '#0A0A0B' }}>
       {/* Background gradient */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#FF4F00]/20 to-[#FF7A33]/10 rounded-full blur-3xl" />
@@ -50,7 +50,7 @@ export default function Loading() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-2xl font-bold text-[var(--text-primary)]"
+                  className="text-2xl font-bold text-white"
         >
           Liza<span className="text-[#FF4F00]">.ai</span>
         </motion.div>

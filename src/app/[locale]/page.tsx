@@ -22,8 +22,8 @@ function ParallaxBackground() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-100" />
 
-      {/* Parallax Orbs - wrapped in relative container for Framer Motion */}
-      <div className="absolute inset-0" style={{ position: 'relative' }}>
+      {/* Parallax Orbs - relative container for Framer Motion scroll tracking */}
+      <div className="relative w-full h-full">
         <motion.div
           style={{ y: y1 }}
           className="absolute top-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-[#FF4F00] blur-[180px] opacity-15"
@@ -757,7 +757,7 @@ function Footer() {
               <a key={link.label} href={link.href} className="hover:text-[var(--text-primary)] transition text-sm">{link.label}</a>
             ))}
           </div>
-          <div className="text-[#52525B] text-sm">{t('copyright')}</div>
+          <div className="text-[#52525B] text-sm">© {new Date().getFullYear()} Liza.ai. {t('allRightsReserved')}</div>
         </div>
       </div>
     </footer>
